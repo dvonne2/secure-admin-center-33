@@ -1,10 +1,11 @@
+
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { ActivityLog } from "@/types/auth";
 import { useNavigate } from "react-router-dom";
 
 interface RoleSwitchOptions {
-  targetRole: 'admin' | 'manager' | 'user';
+  targetRole: 'cfo' | 'cto' | 'ceo' | 'chro';
   originalRole: string;
 }
 
@@ -54,7 +55,7 @@ export function useRoleSwitcher() {
     const impersonatedUser = {
       ...user,
       role: targetRole,
-      username: `${user.username} (as ${targetRole})`,
+      username: `${user.username} (as ${targetRole.toUpperCase()})`,
     };
 
     // Update localStorage with impersonated user
@@ -62,11 +63,11 @@ export function useRoleSwitcher() {
     
     toast({
       title: "Role Switched",
-      description: `Now viewing as ${targetRole}`,
+      description: `Now viewing as ${targetRole.toUpperCase()}`,
     });
 
-    // Force page refresh to update the context
-    window.location.href = '/dashboard';
+    // Navigate to role-specific dashboard
+    navigate(`/dashboard/${targetRole}`);
   };
 
   const exitRoleSwitch = () => {
@@ -92,7 +93,7 @@ export function useRoleSwitcher() {
       description: "Back to superadmin view",
     });
 
-    window.location.href = '/dashboard';
+    navigate('/dashboard');
   };
 
   const isImpersonating = user?.username.includes('(as ') || false;

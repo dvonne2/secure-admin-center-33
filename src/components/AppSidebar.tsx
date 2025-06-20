@@ -11,7 +11,6 @@ import {
   Database,
   LogOut,
   ChevronRight,
-  Crown,
   UserCheck,
 } from "lucide-react";
 import {
@@ -58,12 +57,33 @@ const menuItems = {
     { title: "Tasks", url: "/tasks", icon: FileText },
     { title: "Calendar", url: "/calendar", icon: Calendar },
   ],
+  cfo: [
+    { title: "CFO Dashboard", url: "/dashboard/cfo", icon: BarChart3 },
+    { title: "Financial Reports", url: "/finance/reports", icon: FileText },
+    { title: "Budget Management", url: "/finance/budget", icon: Settings },
+  ],
+  cto: [
+    { title: "CTO Dashboard", url: "/dashboard/cto", icon: BarChart3 },
+    { title: "Technology Stack", url: "/tech/stack", icon: Settings },
+    { title: "Development Teams", url: "/tech/teams", icon: Users },
+  ],
+  ceo: [
+    { title: "CEO Dashboard", url: "/dashboard/ceo", icon: BarChart3 },
+    { title: "Executive Reports", url: "/executive/reports", icon: FileText },
+    { title: "Strategic Planning", url: "/executive/strategy", icon: Settings },
+  ],
+  chro: [
+    { title: "CHRO Dashboard", url: "/dashboard/chro", icon: BarChart3 },
+    { title: "HR Analytics", url: "/hr/analytics", icon: BarChart3 },
+    { title: "Employee Management", url: "/hr/employees", icon: Users },
+  ],
 };
 
-const availableRoles = [
-  { name: 'admin', label: 'Admin', icon: UserCog },
-  { name: 'manager', label: 'Manager', icon: Users },
-  { name: 'user', label: 'User', icon: UserCheck },
+const businessRoles = [
+  { name: 'cfo', label: 'CFO', description: 'Chief Financial Officer' },
+  { name: 'cto', label: 'CTO', description: 'Chief Technology Officer' },
+  { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer' },
+  { name: 'chro', label: 'CHRO', description: 'Chief Human Resources Officer' },
 ];
 
 export function AppSidebar() {
@@ -73,9 +93,9 @@ export function AppSidebar() {
 
   if (!user) return null;
 
-  const userMenuItems = menuItems[user.role] || [];
+  const userMenuItems = menuItems[user.role as keyof typeof menuItems] || [];
 
-  const handleRoleSwitch = (targetRole: 'admin' | 'manager' | 'user') => {
+  const handleRoleSwitch = (targetRole: 'cfo' | 'cto' | 'ceo' | 'chro') => {
     switchToRole({ targetRole, originalRole: user.role });
   };
 
@@ -115,16 +135,18 @@ export function AppSidebar() {
         {canSwitchRoles && (
           <SidebarGroup>
             <SidebarGroupLabel className="flex items-center gap-2">
-              <Crown className="h-4 w-4" />
-              Enter As Role
+              🔐 Enter As Role
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {availableRoles.map((role) => (
+                {businessRoles.map((role) => (
                   <SidebarMenuItem key={role.name}>
-                    <SidebarMenuButton onClick={() => handleRoleSwitch(role.name as 'admin' | 'manager' | 'user')}>
-                      <role.icon className="h-4 w-4" />
-                      <span>{role.label}</span>
+                    <SidebarMenuButton onClick={() => handleRoleSwitch(role.name as 'cfo' | 'cto' | 'ceo' | 'chro')}>
+                      <UserCheck className="h-4 w-4" />
+                      <div className="flex flex-col items-start">
+                        <span className="font-medium">{role.label}</span>
+                        <span className="text-xs text-muted-foreground">{role.description}</span>
+                      </div>
                       <ChevronRight className="ml-auto h-4 w-4" />
                     </SidebarMenuButton>
                   </SidebarMenuItem>

@@ -18,6 +18,10 @@ import TasksPage from "./pages/TasksPage";
 import CalendarPage from "./pages/CalendarPage";
 import ReportsPage from "./pages/ReportsPage";
 import DatabasePage from "./pages/DatabasePage";
+import CFODashboard from "./pages/CFODashboard";
+import CTODashboard from "./pages/CTODashboard";
+import CEODashboard from "./pages/CEODashboard";
+import CHRODashboard from "./pages/CHRODashboard";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -40,6 +44,47 @@ const App = () => (
                 <SidebarProvider>
                   <MainLayout>
                     <Dashboard />
+                  </MainLayout>
+                </SidebarProvider>
+              </ProtectedRoute>
+            } />
+            
+            {/* Business Role Dashboards */}
+            <Route path="/dashboard/cfo" element={
+              <ProtectedRoute allowedRoles={['cfo', 'superadmin']}>
+                <SidebarProvider>
+                  <MainLayout>
+                    <CFODashboard />
+                  </MainLayout>
+                </SidebarProvider>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/dashboard/cto" element={
+              <ProtectedRoute allowedRoles={['cto', 'superadmin']}>
+                <SidebarProvider>
+                  <MainLayout>
+                    <CTODashboard />
+                  </MainLayout>
+                </SidebarProvider>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/dashboard/ceo" element={
+              <ProtectedRoute allowedRoles={['ceo', 'superadmin']}>
+                <SidebarProvider>
+                  <MainLayout>
+                    <CEODashboard />
+                  </MainLayout>
+                </SidebarProvider>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/dashboard/chro" element={
+              <ProtectedRoute allowedRoles={['chro', 'superadmin']}>
+                <SidebarProvider>
+                  <MainLayout>
+                    <CHRODashboard />
                   </MainLayout>
                 </SidebarProvider>
               </ProtectedRoute>
