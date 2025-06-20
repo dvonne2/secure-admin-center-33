@@ -11,6 +11,8 @@ import {
   Database,
   LogOut,
   ChevronRight,
+  Crown,
+  UserCheck,
 } from "lucide-react";
 import {
   Sidebar,
@@ -28,6 +30,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
+import { useRoleSwitcher } from "@/hooks/useRoleSwitcher";
 
 const menuItems = {
   superadmin: [
@@ -57,13 +60,24 @@ const menuItems = {
   ],
 };
 
+const availableRoles = [
+  { name: 'admin', label: 'Admin', icon: UserCog },
+  { name: 'manager', label: 'Manager', icon: Users },
+  { name: 'user', label: 'User', icon: UserCheck },
+];
+
 export function AppSidebar() {
   const { user, logout } = useAuth();
   const location = useLocation();
+  const { switchToRole, exitRoleSwitch, isImpersonating, canSwitchRoles } = useRoleSwitcher();
 
   if (!user) return null;
 
   const userMenuItems = menuItems[user.role] || [];
+
+  const handleRoleSwitch = (targetRole: 'admin' | 'manager' | 'user') => {
+    switchToRole({ targetRole, originalRole: user.role });
+  };
 
   return (
     <Sidebar>
@@ -97,6 +111,43 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        {canSwitchRoles && (
+          <SidebarGroup>
+            <SidebarGroupLabel className="flex items-center gap-2">
+              <Crown className="h-4 w-4" />
+              Enter As Role
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {availableRoles.map((role) => (
+                  <SidebarMenuItem key={role.name}>
+                    <SidebarMenuButton onClick={() => handleRoleSwitch(role.name as 'admin' | 'manager' | 'user')}>
+                      <role.icon className="h-4 w-4" />
+                      <span>{role.label}</span>
+                      <ChevronRight className="ml-auto h-4 w-4" />
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
+
+        {isImpersonating && (
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton onClick={exitRoleSwitch} className="bg-orange-100 hover:bg-orange-200 text-orange-800">
+                    <Shield className="h-4 w-4" />
+                    <span>Exit Role Switch</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
       </SidebarContent>
 
       <SidebarFooter className="p-4">
@@ -108,7 +159,12 @@ export function AppSidebar() {
           </Avatar>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium truncate">{user.username}</p>
-            <p className="text-xs text-muted-foreground capitalize">{user.role}</p>
+            <p className="text-xs text-muted-foreground capitalize">
+              {user.role}
+              {isImpersonating && (
+                <span className="ml-1 text-orange-600">(Impersonating)</span>
+              )}
+            </p>
           </div>
         </div>
         <Button variant="outline" size="sm" onClick={logout} className="w-full">
