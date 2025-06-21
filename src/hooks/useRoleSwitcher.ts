@@ -4,8 +4,10 @@ import { useToast } from "@/hooks/use-toast";
 import { ActivityLog } from "@/types/auth";
 import { useNavigate } from "react-router-dom";
 
+type BusinessRole = 'cfo' | 'cto' | 'ceo' | 'chro' | 'cmo' | 'coo' | 'ciso' | 'cpo' | 'cdo' | 'clo' | 'cao';
+
 interface RoleSwitchOptions {
-  targetRole: 'cfo' | 'cto' | 'ceo' | 'chro';
+  targetRole: BusinessRole;
   originalRole: string;
 }
 

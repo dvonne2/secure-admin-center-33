@@ -3,7 +3,7 @@ export interface User {
   id: string;
   username: string;
   email: string;
-  role: 'superadmin' | 'admin' | 'manager' | 'user' | 'cfo' | 'cto' | 'ceo' | 'chro';
+  role: 'superadmin' | 'admin' | 'manager' | 'user' | 'cfo' | 'cto' | 'ceo' | 'chro' | 'cmo' | 'coo' | 'ciso' | 'cpo' | 'cdo' | 'clo' | 'cao';
   status: 'active' | 'inactive';
   createdAt: string;
   lastLogin?: string;

@@ -77,6 +77,41 @@ const menuItems = {
     { title: "HR Analytics", url: "/hr/analytics", icon: BarChart3 },
     { title: "Employee Management", url: "/hr/employees", icon: Users },
   ],
+  cmo: [
+    { title: "CMO Dashboard", url: "/dashboard/cmo", icon: BarChart3 },
+    { title: "Marketing Analytics", url: "/marketing/analytics", icon: BarChart3 },
+    { title: "Campaign Management", url: "/marketing/campaigns", icon: FileText },
+  ],
+  coo: [
+    { title: "COO Dashboard", url: "/dashboard/coo", icon: BarChart3 },
+    { title: "Operations Analytics", url: "/operations/analytics", icon: BarChart3 },
+    { title: "Process Management", url: "/operations/processes", icon: Settings },
+  ],
+  ciso: [
+    { title: "CISO Dashboard", url: "/dashboard/ciso", icon: BarChart3 },
+    { title: "Security Analytics", url: "/security/analytics", icon: Shield },
+    { title: "Compliance Reports", url: "/security/compliance", icon: FileText },
+  ],
+  cpo: [
+    { title: "CPO Dashboard", url: "/dashboard/cpo", icon: BarChart3 },
+    { title: "Product Analytics", url: "/product/analytics", icon: BarChart3 },
+    { title: "Product Roadmap", url: "/product/roadmap", icon: FileText },
+  ],
+  cdo: [
+    { title: "CDO Dashboard", url: "/dashboard/cdo", icon: BarChart3 },
+    { title: "Data Analytics", url: "/data/analytics", icon: BarChart3 },
+    { title: "Data Governance", url: "/data/governance", icon: Settings },
+  ],
+  clo: [
+    { title: "CLO Dashboard", url: "/dashboard/clo", icon: BarChart3 },
+    { title: "Legal Analytics", url: "/legal/analytics", icon: BarChart3 },
+    { title: "Compliance Management", url: "/legal/compliance", icon: FileText },
+  ],
+  cao: [
+    { title: "CAO Dashboard", url: "/dashboard/cao", icon: BarChart3 },
+    { title: "Audit Analytics", url: "/audit/analytics", icon: BarChart3 },
+    { title: "Risk Management", url: "/audit/risk", icon: Shield },
+  ],
 };
 
 const businessRoles = [
@@ -84,7 +119,16 @@ const businessRoles = [
   { name: 'cto', label: 'CTO', description: 'Chief Technology Officer' },
   { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer' },
   { name: 'chro', label: 'CHRO', description: 'Chief Human Resources Officer' },
+  { name: 'cmo', label: 'CMO', description: 'Chief Marketing Officer' },
+  { name: 'coo', label: 'COO', description: 'Chief Operating Officer' },
+  { name: 'ciso', label: 'CISO', description: 'Chief Information Security Officer' },
+  { name: 'cpo', label: 'CPO', description: 'Chief Product Officer' },
+  { name: 'cdo', label: 'CDO', description: 'Chief Data Officer' },
+  { name: 'clo', label: 'CLO', description: 'Chief Legal Officer' },
+  { name: 'cao', label: 'CAO', description: 'Chief Audit Officer' },
 ];
+
+type BusinessRoleType = 'cfo' | 'cto' | 'ceo' | 'chro' | 'cmo' | 'coo' | 'ciso' | 'cpo' | 'cdo' | 'clo' | 'cao';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -95,7 +139,7 @@ export function AppSidebar() {
 
   const userMenuItems = menuItems[user.role as keyof typeof menuItems] || [];
 
-  const handleRoleSwitch = (targetRole: 'cfo' | 'cto' | 'ceo' | 'chro') => {
+  const handleRoleSwitch = (targetRole: BusinessRoleType) => {
     switchToRole({ targetRole, originalRole: user.role });
   };
 
@@ -141,7 +185,7 @@ export function AppSidebar() {
               <SidebarMenu>
                 {businessRoles.map((role) => (
                   <SidebarMenuItem key={role.name}>
-                    <SidebarMenuButton onClick={() => handleRoleSwitch(role.name as 'cfo' | 'cto' | 'ceo' | 'chro')}>
+                    <SidebarMenuButton onClick={() => handleRoleSwitch(role.name as BusinessRoleType)}>
                       <UserCheck className="h-4 w-4" />
                       <div className="flex flex-col items-start">
                         <span className="font-medium">{role.label}</span>
