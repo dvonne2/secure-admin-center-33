@@ -1,3 +1,4 @@
+
 import {
   Calendar,
   Users,
@@ -115,20 +116,20 @@ const menuItems = {
 };
 
 const businessRoles = [
+  { name: 'production', label: 'Production', description: 'Production Management' },
+  { name: 'inventory', label: 'Inventory', description: 'Inventory Management' },
+  { name: 'telesales', label: 'Telesales', description: 'Telesales Operations' },
+  { name: 'delivery_agent', label: 'Delivery', description: 'Delivery Operations' },
+  { name: 'accountant', label: 'Accountant', description: 'Accounting & Finance' },
   { name: 'cfo', label: 'CFO', description: 'Chief Financial Officer' },
-  { name: 'cto', label: 'CTO', description: 'Chief Technology Officer' },
   { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer' },
-  { name: 'chro', label: 'CHRO', description: 'Chief Human Resources Officer' },
-  { name: 'cmo', label: 'CMO', description: 'Chief Marketing Officer' },
-  { name: 'coo', label: 'COO', description: 'Chief Operating Officer' },
-  { name: 'ciso', label: 'CISO', description: 'Chief Information Security Officer' },
-  { name: 'cpo', label: 'CPO', description: 'Chief Product Officer' },
-  { name: 'cdo', label: 'CDO', description: 'Chief Data Officer' },
-  { name: 'clo', label: 'CLO', description: 'Chief Legal Officer' },
-  { name: 'cao', label: 'CAO', description: 'Chief Audit Officer' },
+  { name: 'hr', label: 'HR', description: 'Human Resources' },
+  { name: 'manufacturing', label: 'Manufacturing', description: 'Manufacturing Operations' },
+  { name: 'media_buyer', label: 'Media Buyer', description: 'Media Buying & Marketing' },
+  { name: 'investor', label: 'Investor', description: 'Investment Management' },
 ];
 
-type BusinessRoleType = 'cfo' | 'cto' | 'ceo' | 'chro' | 'cmo' | 'coo' | 'ciso' | 'cpo' | 'cdo' | 'clo' | 'cao';
+type BusinessRoleType = 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
