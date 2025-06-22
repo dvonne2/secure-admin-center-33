@@ -1,4 +1,3 @@
-
 import {
   Calendar,
   Users,
@@ -12,6 +11,7 @@ import {
   LogOut,
   ChevronRight,
   UserCheck,
+  Package,
 } from "lucide-react";
 import {
   Sidebar,
@@ -57,60 +57,60 @@ const menuItems = {
     { title: "Tasks", url: "/tasks", icon: FileText },
     { title: "Calendar", url: "/calendar", icon: Calendar },
   ],
+  production: [
+    { title: "Production Dashboard", url: "/dashboard/production", icon: BarChart3 },
+    { title: "Production Lines", url: "/production/lines", icon: Settings },
+    { title: "Quality Control", url: "/production/quality", icon: FileText },
+  ],
+  inventory: [
+    { title: "Inventory Dashboard", url: "/dashboard/inventory", icon: BarChart3 },
+    { title: "Stock Management", url: "/inventory/stock", icon: Package },
+    { title: "Purchase Orders", url: "/inventory/orders", icon: FileText },
+  ],
+  telesales: [
+    { title: "Telesales Dashboard", url: "/dashboard/telesales", icon: BarChart3 },
+    { title: "Call Queue", url: "/telesales/queue", icon: Users },
+    { title: "Sales Reports", url: "/telesales/reports", icon: FileText },
+  ],
+  delivery_agent: [
+    { title: "Delivery Dashboard", url: "/dashboard/delivery_agent", icon: BarChart3 },
+    { title: "Route Planning", url: "/delivery/routes", icon: Settings },
+    { title: "Delivery History", url: "/delivery/history", icon: FileText },
+  ],
+  accountant: [
+    { title: "Accountant Dashboard", url: "/dashboard/accountant", icon: BarChart3 },
+    { title: "Invoices", url: "/accounting/invoices", icon: FileText },
+    { title: "Financial Reports", url: "/accounting/reports", icon: Settings },
+  ],
   cfo: [
     { title: "CFO Dashboard", url: "/dashboard/cfo", icon: BarChart3 },
     { title: "Financial Reports", url: "/finance/reports", icon: FileText },
     { title: "Budget Management", url: "/finance/budget", icon: Settings },
-  ],
-  cto: [
-    { title: "CTO Dashboard", url: "/dashboard/cto", icon: BarChart3 },
-    { title: "Technology Stack", url: "/tech/stack", icon: Settings },
-    { title: "Development Teams", url: "/tech/teams", icon: Users },
   ],
   ceo: [
     { title: "CEO Dashboard", url: "/dashboard/ceo", icon: BarChart3 },
     { title: "Executive Reports", url: "/executive/reports", icon: FileText },
     { title: "Strategic Planning", url: "/executive/strategy", icon: Settings },
   ],
-  chro: [
-    { title: "CHRO Dashboard", url: "/dashboard/chro", icon: BarChart3 },
-    { title: "HR Analytics", url: "/hr/analytics", icon: BarChart3 },
+  hr: [
+    { title: "HR Dashboard", url: "/dashboard/hr", icon: BarChart3 },
     { title: "Employee Management", url: "/hr/employees", icon: Users },
+    { title: "Recruitment", url: "/hr/recruitment", icon: FileText },
   ],
-  cmo: [
-    { title: "CMO Dashboard", url: "/dashboard/cmo", icon: BarChart3 },
-    { title: "Marketing Analytics", url: "/marketing/analytics", icon: BarChart3 },
-    { title: "Campaign Management", url: "/marketing/campaigns", icon: FileText },
+  manufacturing: [
+    { title: "Manufacturing Dashboard", url: "/dashboard/manufacturing", icon: BarChart3 },
+    { title: "Production Planning", url: "/manufacturing/planning", icon: Settings },
+    { title: "Equipment Management", url: "/manufacturing/equipment", icon: FileText },
   ],
-  coo: [
-    { title: "COO Dashboard", url: "/dashboard/coo", icon: BarChart3 },
-    { title: "Operations Analytics", url: "/operations/analytics", icon: BarChart3 },
-    { title: "Process Management", url: "/operations/processes", icon: Settings },
+  media_buyer: [
+    { title: "Media Buyer Dashboard", url: "/dashboard/media_buyer", icon: BarChart3 },
+    { title: "Campaign Management", url: "/media/campaigns", icon: Settings },
+    { title: "Analytics", url: "/media/analytics", icon: FileText },
   ],
-  ciso: [
-    { title: "CISO Dashboard", url: "/dashboard/ciso", icon: BarChart3 },
-    { title: "Security Analytics", url: "/security/analytics", icon: Shield },
-    { title: "Compliance Reports", url: "/security/compliance", icon: FileText },
-  ],
-  cpo: [
-    { title: "CPO Dashboard", url: "/dashboard/cpo", icon: BarChart3 },
-    { title: "Product Analytics", url: "/product/analytics", icon: BarChart3 },
-    { title: "Product Roadmap", url: "/product/roadmap", icon: FileText },
-  ],
-  cdo: [
-    { title: "CDO Dashboard", url: "/dashboard/cdo", icon: BarChart3 },
-    { title: "Data Analytics", url: "/data/analytics", icon: BarChart3 },
-    { title: "Data Governance", url: "/data/governance", icon: Settings },
-  ],
-  clo: [
-    { title: "CLO Dashboard", url: "/dashboard/clo", icon: BarChart3 },
-    { title: "Legal Analytics", url: "/legal/analytics", icon: BarChart3 },
-    { title: "Compliance Management", url: "/legal/compliance", icon: FileText },
-  ],
-  cao: [
-    { title: "CAO Dashboard", url: "/dashboard/cao", icon: BarChart3 },
-    { title: "Audit Analytics", url: "/audit/analytics", icon: BarChart3 },
-    { title: "Risk Management", url: "/audit/risk", icon: Shield },
+  investor: [
+    { title: "Investor Dashboard", url: "/dashboard/investor", icon: BarChart3 },
+    { title: "Portfolio Analysis", url: "/investor/portfolio", icon: BarChart3 },
+    { title: "Financial Reports", url: "/investor/reports", icon: FileText },
   ],
 };
 

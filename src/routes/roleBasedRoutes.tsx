@@ -1,82 +1,82 @@
 
 import { Route } from "react-router-dom";
 import { RoleBasedLayout } from "@/components/layouts/RoleBasedLayout";
+import ProductionDashboard from "@/pages/ProductionDashboard";
+import InventoryDashboard from "@/pages/InventoryDashboard";
+import TelesalesDashboard from "@/pages/TelesalesDashboard";
+import DeliveryAgentDashboard from "@/pages/DeliveryAgentDashboard";
+import AccountantDashboard from "@/pages/AccountantDashboard";
 import CFODashboard from "@/pages/CFODashboard";
-import CTODashboard from "@/pages/CTODashboard";
 import CEODashboard from "@/pages/CEODashboard";
-import CHRODashboard from "@/pages/CHRODashboard";
-import CMODashboard from "@/pages/CMODashboard";
-import COODashboard from "@/pages/COODashboard";
-import CISODashboard from "@/pages/CISODashboard";
-import CPODashboard from "@/pages/CPODashboard";
-import CDODashboard from "@/pages/CDODashboard";
-import CLODashboard from "@/pages/CLODashboard";
-import CAODashboard from "@/pages/CAODashboard";
+import HRDashboard from "@/pages/HRDashboard";
+import ManufacturingDashboard from "@/pages/ManufacturingDashboard";
+import MediaBuyerDashboard from "@/pages/MediaBuyerDashboard";
+import InvestorDashboard from "@/pages/InvestorDashboard";
 
 export const roleBasedRoutes = [
+  <Route key="production-dashboard" path="/dashboard/production" element={
+    <RoleBasedLayout allowedRoles={['production', 'superadmin']}>
+      <ProductionDashboard />
+    </RoleBasedLayout>
+  } />,
+  
+  <Route key="inventory-dashboard" path="/dashboard/inventory" element={
+    <RoleBasedLayout allowedRoles={['inventory', 'superadmin']}>
+      <InventoryDashboard />
+    </RoleBasedLayout>
+  } />,
+  
+  <Route key="telesales-dashboard" path="/dashboard/telesales" element={
+    <RoleBasedLayout allowedRoles={['telesales', 'superadmin']}>
+      <TelesalesDashboard />
+    </RoleBasedLayout>
+  } />,
+  
+  <Route key="delivery-agent-dashboard" path="/dashboard/delivery_agent" element={
+    <RoleBasedLayout allowedRoles={['delivery_agent', 'superadmin']}>
+      <DeliveryAgentDashboard />
+    </RoleBasedLayout>
+  } />,
+
+  <Route key="accountant-dashboard" path="/dashboard/accountant" element={
+    <RoleBasedLayout allowedRoles={['accountant', 'superadmin']}>
+      <AccountantDashboard />
+    </RoleBasedLayout>
+  } />,
+
   <Route key="cfo-dashboard" path="/dashboard/cfo" element={
     <RoleBasedLayout allowedRoles={['cfo', 'superadmin']}>
       <CFODashboard />
     </RoleBasedLayout>
   } />,
-  
-  <Route key="cto-dashboard" path="/dashboard/cto" element={
-    <RoleBasedLayout allowedRoles={['cto', 'superadmin']}>
-      <CTODashboard />
-    </RoleBasedLayout>
-  } />,
-  
+
   <Route key="ceo-dashboard" path="/dashboard/ceo" element={
     <RoleBasedLayout allowedRoles={['ceo', 'superadmin']}>
       <CEODashboard />
     </RoleBasedLayout>
   } />,
-  
-  <Route key="chro-dashboard" path="/dashboard/chro" element={
-    <RoleBasedLayout allowedRoles={['chro', 'superadmin']}>
-      <CHRODashboard />
+
+  <Route key="hr-dashboard" path="/dashboard/hr" element={
+    <RoleBasedLayout allowedRoles={['hr', 'superadmin']}>
+      <HRDashboard />
     </RoleBasedLayout>
   } />,
 
-  <Route key="cmo-dashboard" path="/dashboard/cmo" element={
-    <RoleBasedLayout allowedRoles={['cmo', 'superadmin']}>
-      <CMODashboard />
+  <Route key="manufacturing-dashboard" path="/dashboard/manufacturing" element={
+    <RoleBasedLayout allowedRoles={['manufacturing', 'superadmin']}>
+      <ManufacturingDashboard />
     </RoleBasedLayout>
   } />,
 
-  <Route key="coo-dashboard" path="/dashboard/coo" element={
-    <RoleBasedLayout allowedRoles={['coo', 'superadmin']}>
-      <COODashboard />
+  <Route key="media-buyer-dashboard" path="/dashboard/media_buyer" element={
+    <RoleBasedLayout allowedRoles={['media_buyer', 'superadmin']}>
+      <MediaBuyerDashboard />
     </RoleBasedLayout>
   } />,
 
-  <Route key="ciso-dashboard" path="/dashboard/ciso" element={
-    <RoleBasedLayout allowedRoles={['ciso', 'superadmin']}>
-      <CISODashboard />
-    </RoleBasedLayout>
-  } />,
-
-  <Route key="cpo-dashboard" path="/dashboard/cpo" element={
-    <RoleBasedLayout allowedRoles={['cpo', 'superadmin']}>
-      <CPODashboard />
-    </RoleBasedLayout>
-  } />,
-
-  <Route key="cdo-dashboard" path="/dashboard/cdo" element={
-    <RoleBasedLayout allowedRoles={['cdo', 'superadmin']}>
-      <CDODashboard />
-    </RoleBasedLayout>
-  } />,
-
-  <Route key="clo-dashboard" path="/dashboard/clo" element={
-    <RoleBasedLayout allowedRoles={['clo', 'superadmin']}>
-      <CLODashboard />
-    </RoleBasedLayout>
-  } />,
-
-  <Route key="cao-dashboard" path="/dashboard/cao" element={
-    <RoleBasedLayout allowedRoles={['cao', 'superadmin']}>
-      <CAODashboard />
+  <Route key="investor-dashboard" path="/dashboard/investor" element={
+    <RoleBasedLayout allowedRoles={['investor', 'superadmin']}>
+      <InvestorDashboard />
     </RoleBasedLayout>
   } />
 ];
