@@ -1,4 +1,3 @@
-
 import {
   Calendar,
   Users,
@@ -13,6 +12,7 @@ import {
   ChevronRight,
   UserCheck,
   Package,
+  Truck,
 } from "lucide-react";
 import {
   Sidebar,
@@ -116,7 +116,7 @@ const menuItems = {
 };
 
 const businessRoles = [
-  { name: 'production', label: 'Production', description: 'Production Management' },
+  { name: 'production', label: 'Logistics', description: 'Logistics Operations' },
   { name: 'inventory', label: 'Inventory', description: 'Inventory Management' },
   { name: 'telesales', label: 'Telesales', description: 'Telesales Operations' },
   { name: 'delivery_agent', label: 'Delivery', description: 'Delivery Operations' },
