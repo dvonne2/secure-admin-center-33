@@ -49,7 +49,7 @@ export default function TelesalesDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$8,450</div>
+            <div className="text-2xl font-bold">₦8,450,000</div>
             <p className="text-xs text-muted-foreground">
               +24% from yesterday
             </p>
@@ -80,15 +80,15 @@ export default function TelesalesDashboard() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span className="font-medium">Sarah Johnson</span>
-                <Badge>$1,250</Badge>
+                <Badge>₦1,250,000</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="font-medium">Mike Chen</span>
-                <Badge>$980</Badge>
+                <Badge>₦980,000</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="font-medium">Lisa Rodriguez</span>
-                <Badge>$875</Badge>
+                <Badge>₦875,000</Badge>
               </div>
             </div>
           </CardContent>

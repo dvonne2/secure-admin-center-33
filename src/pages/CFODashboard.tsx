@@ -23,7 +23,7 @@ export default function CFODashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$2,845,000</div>
+            <div className="text-2xl font-bold">₦2,845,000,000</div>
             <p className="text-xs text-muted-foreground">
               +12.5% from last quarter
             </p>
@@ -36,7 +36,7 @@ export default function CFODashboard() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$1,245,000</div>
+            <div className="text-2xl font-bold">₦1,245,000,000</div>
             <p className="text-xs text-muted-foreground">
               -3.2% from last quarter
             </p>
@@ -49,7 +49,7 @@ export default function CFODashboard() {
             <BarChart3 className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$1,600,000</div>
+            <div className="text-2xl font-bold">₦1,600,000,000</div>
             <p className="text-xs text-muted-foreground">
               +18.7% from last quarter
             </p>
@@ -80,19 +80,19 @@ export default function CFODashboard() {
             <div className="space-y-4">
               <div className="flex justify-between">
                 <span>Gross Revenue</span>
-                <span className="font-semibold">$2,845,000</span>
+                <span className="font-semibold">₦2,845,000,000</span>
               </div>
               <div className="flex justify-between">
                 <span>Operating Expenses</span>
-                <span className="font-semibold">$1,245,000</span>
+                <span className="font-semibold">₦1,245,000,000</span>
               </div>
               <div className="flex justify-between">
                 <span>EBITDA</span>
-                <span className="font-semibold">$1,780,000</span>
+                <span className="font-semibold">₦1,780,000,000</span>
               </div>
               <div className="flex justify-between border-t pt-2">
                 <span className="font-semibold">Net Income</span>
-                <span className="font-semibold text-green-600">$1,600,000</span>
+                <span className="font-semibold text-green-600">₦1,600,000,000</span>
               </div>
             </div>
           </CardContent>

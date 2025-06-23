@@ -23,7 +23,7 @@ export default function AccountantDashboard() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$145,230</div>
+            <div className="text-2xl font-bold">₦145,230,000</div>
             <p className="text-xs text-muted-foreground">
               +12% from last month
             </p>
@@ -38,7 +38,7 @@ export default function AccountantDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">23</div>
             <p className="text-xs text-muted-foreground">
-              $12,450 total value
+              ₦12,450,000 total value
             </p>
           </CardContent>
         </Card>
@@ -49,7 +49,7 @@ export default function AccountantDashboard() {
             <Calculator className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$87,650</div>
+            <div className="text-2xl font-bold">₦87,650,000</div>
             <p className="text-xs text-muted-foreground">
               -5% from last month
             </p>
@@ -111,7 +111,7 @@ export default function AccountantDashboard() {
               </div>
               <div className="flex items-center justify-between">
                 <span>Tax Liability</span>
-                <span className="font-bold">$24,580</span>
+                <span className="font-bold">₦24,580,000</span>
               </div>
             </div>
           </CardContent>

@@ -49,7 +49,7 @@ export default function CPODashboard() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$2.4M</div>
+            <div className="text-2xl font-bold">₦2,400,000,000</div>
             <p className="text-xs text-muted-foreground">
               +18% from last quarter
             </p>

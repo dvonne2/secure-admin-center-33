@@ -23,7 +23,7 @@ export default function InvestorDashboard() {
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$2.4M</div>
+            <div className="text-2xl font-bold">₦2,400,000,000</div>
             <p className="text-xs text-muted-foreground">
               +8.2% this quarter
             </p>
@@ -107,15 +107,15 @@ export default function InvestorDashboard() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span>Bought AAPL - 100 shares</span>
-                <span className="font-bold text-green-600">+$15,000</span>
+                <span className="font-bold text-green-600">+₦15,000,000</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Sold MSFT - 50 shares</span>
-                <span className="font-bold text-red-600">-$12,500</span>
+                <span className="font-bold text-red-600">-₦12,500,000</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Dividend Received - REIT</span>
-                <span className="font-bold text-green-600">+$850</span>
+                <span className="font-bold text-green-600">+₦850,000</span>
               </div>
             </div>
           </CardContent>

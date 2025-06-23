@@ -23,7 +23,7 @@ export default function MediaBuyerDashboard() {
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$24,750</div>
+            <div className="text-2xl font-bold">₦24,750,000</div>
             <p className="text-xs text-muted-foreground">
               This month so far
             </p>
@@ -103,7 +103,7 @@ export default function MediaBuyerDashboard() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <span>Cost Per Click</span>
-                <span className="font-bold">$0.45</span>
+                <span className="font-bold">₦450</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>Conversion Rate</span>
@@ -111,7 +111,7 @@ export default function MediaBuyerDashboard() {
               </div>
               <div className="flex items-center justify-between">
                 <span>Cost Per Acquisition</span>
-                <span className="font-bold">$16.07</span>
+                <span className="font-bold">₦16,070</span>
               </div>
             </div>
           </CardContent>
