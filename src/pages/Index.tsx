@@ -1,18 +1,30 @@
-import React from 'react';
 
-const DeliveryAgentDashboard = () => {
-  return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <iframe
-        src="https://vitalvida-delivery-pulse.vercel.app"
-        title="Vitalvida Delivery Pulse"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        style={{ border: 'none' }}
-      />
-    </div>
-  );
+import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+
+const Index = () => {
+  const { user, isLoading } = useAuth();
+
+  useEffect(() => {
+    console.log('Index page - User:', user, 'Loading:', isLoading);
+  }, [user, isLoading]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
+
+  // If user is authenticated, redirect to dashboard
+  if (user) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  // If not authenticated, redirect to login
+  return <Navigate to="/login" replace />;
 };
 
-export default DeliveryAgentDashboard;
+export default Index;
