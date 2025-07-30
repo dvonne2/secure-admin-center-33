@@ -1,3 +1,4 @@
+
 import {
   Calendar,
   Users,
@@ -13,6 +14,12 @@ import {
   UserCheck,
   Package,
   Truck,
+  Cog,
+  ClipboardList,
+  Headphones,
+  Box,
+  Book,
+  Megaphone,
 } from "lucide-react";
 import {
   Sidebar,
@@ -31,6 +38,23 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
 import { useRoleSwitcher } from "@/hooks/useRoleSwitcher";
+
+// System Control Center items (top section)
+const systemControlItems = [
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
+  { title: "User Management", url: "/user/management", icon: UserCog },
+  { title: "System Logs", url: "/system/logs", icon: ClipboardList },
+  { title: "Settings", url: "/system/settings", icon: Cog },
+  { title: "Database", url: "/system/database", icon: Database },
+];
+
+// Vitalvida System Automation items (bottom section)
+const vitalvidaAutomationItems = [
+  { title: "Vitalvida CRM", url: "/vitalvida/crm", icon: Headphones },
+  { title: "Vitalvida Inventory", url: "/vitalvida/inventory", icon: Box },
+  { title: "Vitalvida Books", url: "/vitalvida/books", icon: Book },
+  { title: "Vitalvida Marketing", url: "/vitalvida/marketing", icon: Megaphone },
+];
 
 const menuItems = {
   superadmin: [
@@ -59,8 +83,8 @@ const menuItems = {
     { title: "Calendar", url: "/calendar", icon: Calendar },
   ],
   production: [
-    { title: "Production Dashboard", url: "/dashboard/production", icon: BarChart3 },
-    { title: "Production Lines", url: "/production/lines", icon: Settings },
+    { title: "Logistics Dashboard", url: "/dashboard/production", icon: BarChart3 },
+    { title: "Logistics Lines", url: "/production/lines", icon: Settings },
     { title: "Quality Control", url: "/production/quality", icon: FileText },
   ],
   inventory: [
@@ -159,8 +183,32 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
+        {/* System Control Center Section */}
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel className="nav-header text-sm font-semibold text-primary border-b pb-2 mb-3">
+            🔐 System Control Center
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {systemControlItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
+                    <Link to={item.url}>
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Staff & Daily Operations Section */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="nav-header text-sm font-semibold text-secondary-foreground border-b pb-2 mb-3">
+            🧰 Staff & Daily Operations
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {userMenuItems.map((item) => (
@@ -200,6 +248,27 @@ export function AppSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         )}
+
+        {/* Vitalvida System Automation Section */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="nav-header text-sm font-semibold text-accent-foreground border-b pb-2 mb-3">
+            🤖 Vitalvida System Automation
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {vitalvidaAutomationItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
+                    <Link to={item.url}>
+                      <item.icon className="h-4 w-4" />
+                      <span>{item.title}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
         {isImpersonating && (
           <SidebarGroup>
