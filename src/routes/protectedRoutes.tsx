@@ -4,6 +4,8 @@ import { ProtectedLayout } from "@/components/layouts/ProtectedLayout";
 import Dashboard from "@/pages/Dashboard";
 import UserManagement from "@/pages/UserManagement";
 import ActivityLogs from "@/pages/ActivityLogs";
+import SystemLogs from "@/pages/SystemLogs";
+import SystemSettings from "@/pages/SystemSettings";
 import TeamPage from "@/pages/TeamPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import TasksPage from "@/pages/TasksPage";
@@ -18,15 +20,39 @@ export const protectedRoutes = [
     </ProtectedLayout>
   } />,
   
+  <Route key="user-management" path="/user/management" element={
+    <ProtectedLayout allowedRoles={['superadmin', 'admin']}>
+      <UserManagement />
+    </ProtectedLayout>
+  } />,
+  
   <Route key="users" path="/users" element={
     <ProtectedLayout allowedRoles={['superadmin', 'admin']}>
       <UserManagement />
     </ProtectedLayout>
   } />,
   
+  <Route key="system-logs" path="/system/logs" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <SystemLogs />
+    </ProtectedLayout>
+  } />,
+  
   <Route key="logs" path="/logs" element={
     <ProtectedLayout allowedRoles={['superadmin']}>
       <ActivityLogs />
+    </ProtectedLayout>
+  } />,
+  
+  <Route key="system-settings" path="/system/settings" element={
+    <ProtectedLayout allowedRoles={['superadmin', 'admin']}>
+      <SystemSettings />
+    </ProtectedLayout>
+  } />,
+  
+  <Route key="system-database" path="/system/database" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <DatabasePage />
     </ProtectedLayout>
   } />,
   
