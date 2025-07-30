@@ -39,8 +39,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
 import { useRoleSwitcher } from "@/hooks/useRoleSwitcher";
 
-// System Control Center items (top section)
-const systemControlItems = [
+// Staff & Daily Operations items (main functional section)
+const staffOperationsItems = [
   { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
   { title: "User Management", url: "/user/management", icon: UserCog },
   { title: "System Logs", url: "/system/logs", icon: ClipboardList },
@@ -183,35 +183,14 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
-        {/* System Control Center Section */}
+        {/* Staff & Daily Operations Section (renamed from System Control Center) */}
         <SidebarGroup>
           <SidebarGroupLabel className="nav-header text-sm font-semibold text-primary border-b pb-2 mb-3">
-            🔐 System Control Center
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {systemControlItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={location.pathname === item.url}>
-                    <Link to={item.url}>
-                      <item.icon className="h-4 w-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        {/* Staff & Daily Operations Section */}
-        <SidebarGroup>
-          <SidebarGroupLabel className="nav-header text-sm font-semibold text-secondary-foreground border-b pb-2 mb-3">
             🧰 Staff & Daily Operations
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {userMenuItems.map((item) => (
+              {staffOperationsItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={location.pathname === item.url}>
                     <Link to={item.url}>
