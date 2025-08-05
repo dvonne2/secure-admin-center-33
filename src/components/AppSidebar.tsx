@@ -1,5 +1,4 @@
 
-
 import {
   Calendar,
   Users,
@@ -40,36 +39,36 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link, useLocation } from "react-router-dom";
 import { useRoleSwitcher } from "@/hooks/useRoleSwitcher";
 
-// Main dashboard navigation items (top section)
+// Main dashboard navigation items with enhanced colors
 const mainNavItems = [
-  { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
-  { title: "User Management", url: "/users", icon: UserCog },
-  { title: "System Logs", url: "/logs", icon: ClipboardList },
-  { title: "Settings", url: "/settings", icon: Settings },
-  { title: "Database", url: "/database", icon: Database },
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3, gradient: "bg-gradient-primary", hoverGradient: "hover-gradient-purple" },
+  { title: "User Management", url: "/users", icon: UserCog, gradient: "bg-gradient-secondary", hoverGradient: "hover-gradient-teal" },
+  { title: "System Logs", url: "/logs", icon: ClipboardList, gradient: "bg-gradient-accent", hoverGradient: "hover-gradient-amber" },
+  { title: "Settings", url: "/settings", icon: Settings, gradient: "bg-gradient-success", hoverGradient: "hover-gradient-emerald" },
+  { title: "Database", url: "/database", icon: Database, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-indigo" },
 ];
 
-// Vitalvida System Automation items (bottom section)
+// Vitalvida System Automation items with vibrant colors
 const vitalvidaAutomationItems = [
-  { title: "Vitalvida CRM", url: "/vitalvida/crm", icon: Headphones },
-  { title: "Vitalvida Inventory", url: "/vitalvida/inventory", icon: Box },
-  { title: "Vitalvida Books", url: "/vitalvida/books", icon: Book },
-  { title: "Vitalvida Marketing", url: "/vitalvida/marketing", icon: Megaphone },
+  { title: "Vitalvida CRM", url: "/vitalvida/crm", icon: Headphones, gradient: "bg-gradient-rose", hoverGradient: "hover-gradient-rose" },
+  { title: "Vitalvida Inventory", url: "/vitalvida/inventory", icon: Box, gradient: "bg-gradient-emerald", hoverGradient: "hover-gradient-emerald" },
+  { title: "Vitalvida Books", url: "/vitalvida/books", icon: Book, gradient: "bg-gradient-purple", hoverGradient: "hover-gradient-purple" },
+  { title: "Vitalvida Marketing", url: "/vitalvida/marketing", icon: Megaphone, gradient: "bg-gradient-amber", hoverGradient: "hover-gradient-amber" },
 ];
 
 const businessRoles = [
-  { name: 'production', label: 'Logistics', description: 'Logistics Operations' },
-  { name: 'inventory', label: 'Inventory', description: 'Inventory Management' },
-  { name: 'telesales', label: 'Telesales', description: 'Telesales Operations' },
-  { name: 'delivery_agent', label: 'Delivery', description: 'Delivery Operations' },
-  { name: 'accountant', label: 'Accountant', description: 'Accounting & Finance' },
-  { name: 'cfo', label: 'Financial Controller', description: 'Financial Management' },
-  { name: 'manager', label: 'General Manager', description: 'Executive Management' },
-  { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer' },
-  { name: 'hr', label: 'HR', description: 'Human Resources' },
-  { name: 'manufacturing', label: 'Manufacturing', description: 'Manufacturing Operations' },
-  { name: 'media_buyer', label: 'Media Buyer', description: 'Media Buying & Marketing' },
-  { name: 'investor', label: 'Investor', description: 'Investment Management' },
+  { name: 'production', label: 'Logistics', description: 'Logistics Operations', gradient: 'bg-gradient-teal' },
+  { name: 'inventory', label: 'Inventory', description: 'Inventory Management', gradient: 'bg-gradient-emerald' },
+  { name: 'telesales', label: 'Telesales', description: 'Telesales Operations', gradient: 'bg-gradient-purple' },
+  { name: 'delivery_agent', label: 'Delivery', description: 'Delivery Operations', gradient: 'bg-gradient-amber' },
+  { name: 'accountant', label: 'Accountant', description: 'Accounting & Finance', gradient: 'bg-gradient-indigo' },
+  { name: 'cfo', label: 'Financial Controller', description: 'Financial Management', gradient: 'bg-gradient-rose' },
+  { name: 'manager', label: 'General Manager', description: 'Executive Management', gradient: 'bg-gradient-secondary' },
+  { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer', gradient: 'bg-gradient-primary' },
+  { name: 'hr', label: 'HR', description: 'Human Resources', gradient: 'bg-gradient-success' },
+  { name: 'manufacturing', label: 'Manufacturing', description: 'Manufacturing Operations', gradient: 'bg-gradient-info' },
+  { name: 'media_buyer', label: 'Media Buyer', description: 'Media Buying & Marketing', gradient: 'bg-gradient-warning' },
+  { name: 'investor', label: 'Investor', description: 'Investment Management', gradient: 'bg-gradient-accent' },
 ];
 
 type BusinessRoleType = 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
@@ -87,22 +86,22 @@ export function AppSidebar() {
 
   return (
     <Sidebar className="border-r border-modern-slate-200">
-      <SidebarHeader className="p-4 border-b border-modern-slate-200 bg-gradient-to-r from-modern-blue-50 to-modern-slate-50">
+      <SidebarHeader className="p-4 border-b border-modern-slate-200 bg-gradient-to-br from-modern-blue-50 via-modern-purple-50 to-modern-emerald-50">
         <div className="flex items-center space-x-3">
-          <div className="flex items-center justify-center w-10 h-10 bg-gradient-primary rounded-xl shadow-modern">
-            <Shield className="h-5 w-5 text-white" />
+          <div className="flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-xl shadow-modern-lg transform hover:scale-105 transition-all duration-300">
+            <Shield className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-bold bg-gradient-to-r from-modern-blue-600 to-modern-slate-700 bg-clip-text text-transparent">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-modern-blue-600 via-modern-purple-600 to-modern-emerald-600 bg-clip-text text-transparent">
               VitalVida ERP
             </h1>
-            <p className="text-xs text-modern-slate-500 font-medium">Enterprise System</p>
+            <p className="text-sm text-modern-slate-600 font-medium">Enterprise System</p>
           </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="bg-gradient-to-b from-modern-slate-50/50 to-white">
-        {/* Main Navigation Section */}
+      <SidebarContent className="bg-gradient-to-b from-modern-slate-50/80 via-white to-modern-blue-50/30">
+        {/* Main Navigation Section with Enhanced Colors */}
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -111,13 +110,13 @@ export function AppSidebar() {
                   <SidebarMenuButton 
                     asChild 
                     isActive={location.pathname === item.url}
-                    className="transition-all duration-200 hover:shadow-modern rounded-lg mx-2"
+                    className={`transition-all duration-300 mx-2 rounded-xl ${location.pathname === item.url ? 'shadow-modern-lg transform scale-105' : 'hover:shadow-modern hover:transform hover:scale-102'} ${item.hoverGradient}`}
                   >
-                    <Link to={item.url} className="flex items-center gap-3">
-                      <div className={`p-1.5 rounded-lg ${location.pathname === item.url ? 'bg-gradient-primary text-white' : 'bg-modern-slate-100 text-modern-slate-600'}`}>
-                        <item.icon className="h-4 w-4" />
+                    <Link to={item.url} className="flex items-center gap-3 p-3">
+                      <div className={`p-2 rounded-lg ${location.pathname === item.url ? item.gradient : 'bg-modern-slate-100'} shadow-modern transition-all duration-300`}>
+                        <item.icon className={`h-4 w-4 ${location.pathname === item.url ? 'text-white' : 'text-modern-slate-600'}`} />
                       </div>
-                      <span className={`font-medium ${location.pathname === item.url ? 'text-modern-blue-600' : 'text-modern-slate-700'}`}>
+                      <span className={`font-semibold transition-colors duration-300 ${location.pathname === item.url ? 'bg-gradient-to-r from-modern-blue-600 to-modern-purple-600 bg-clip-text text-transparent' : 'text-modern-slate-700'}`}>
                         {item.title}
                       </span>
                     </Link>
@@ -130,11 +129,13 @@ export function AppSidebar() {
 
         {canSwitchRoles && (
           <SidebarGroup>
-            <SidebarGroupLabel className="flex items-center gap-2 text-modern-slate-600 font-semibold px-4">
-              <div className="p-1 rounded bg-modern-blue-100">
-                <UserCheck className="h-4 w-4 text-modern-blue-600" />
+            <SidebarGroupLabel className="flex items-center gap-2 text-modern-slate-700 font-bold px-4 mb-2">
+              <div className="p-1.5 rounded-lg bg-gradient-secondary shadow-modern">
+                <UserCheck className="h-4 w-4 text-white" />
               </div>
-              Enter As Role
+              <span className="bg-gradient-to-r from-modern-teal-600 to-modern-blue-600 bg-clip-text text-transparent">
+                Enter As Role
+              </span>
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
@@ -142,10 +143,10 @@ export function AppSidebar() {
                   <SidebarMenuItem key={role.name}>
                     <SidebarMenuButton 
                       onClick={() => handleRoleSwitch(role.name as BusinessRoleType)}
-                      className="mx-2 p-2 hover:bg-modern-slate-100 hover:shadow-modern rounded-lg transition-all duration-200"
+                      className="mx-2 p-3 hover:bg-gradient-to-r hover:from-modern-slate-100 hover:to-modern-blue-50 hover:shadow-modern rounded-xl transition-all duration-300 hover:transform hover:scale-102"
                     >
                       <div className="flex items-center gap-3 w-full">
-                        <div className="p-1.5 rounded-lg bg-gradient-secondary">
+                        <div className={`p-2 rounded-lg ${role.gradient} shadow-modern transform transition-all duration-300 hover:scale-110`}>
                           {role.name === 'production' && <Truck className="h-4 w-4 text-white" />}
                           {role.name === 'inventory' && <Package className="h-4 w-4 text-white" />}
                           {role.name === 'telesales' && <Users className="h-4 w-4 text-white" />}
@@ -160,10 +161,10 @@ export function AppSidebar() {
                           {role.name === 'investor' && <BarChart3 className="h-4 w-4 text-white" />}
                         </div>
                         <div className="flex flex-col items-start">
-                          <span className="font-medium text-modern-slate-700">{role.label}</span>
-                          <span className="text-xs text-modern-slate-500">{role.description}</span>
+                          <span className="font-semibold text-modern-slate-700">{role.label}</span>
+                          <span className="text-xs text-modern-slate-500 font-medium">{role.description}</span>
                         </div>
-                        <ChevronRight className="ml-auto h-4 w-4 text-modern-slate-400" />
+                        <ChevronRight className="ml-auto h-4 w-4 text-modern-slate-400 transition-transform duration-300 group-hover:transform group-hover:translate-x-1" />
                       </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -173,14 +174,16 @@ export function AppSidebar() {
           </SidebarGroup>
         )}
 
-        {/* Vitalvida System Automation Section */}
+        {/* Vitalvida System Automation Section with Rainbow Colors */}
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sm font-bold text-modern-slate-600 border-b border-modern-slate-200 pb-2 mb-3 mx-4">
+          <SidebarGroupLabel className="text-sm font-bold text-modern-slate-700 border-b border-modern-slate-200 pb-3 mb-3 mx-4">
             <div className="flex items-center gap-2">
-              <div className="p-1 rounded bg-gradient-accent">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-modern-orange-500 to-modern-rose-500 shadow-modern">
                 <Activity className="h-4 w-4 text-white" />
               </div>
-              Vitalvida System Automation
+              <span className="bg-gradient-to-r from-modern-orange-600 via-modern-rose-600 to-modern-purple-600 bg-clip-text text-transparent">
+                Vitalvida System Automation
+              </span>
             </div>
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -190,13 +193,13 @@ export function AppSidebar() {
                   <SidebarMenuButton 
                     asChild 
                     isActive={location.pathname === item.url}
-                    className="mx-2 hover:shadow-modern rounded-lg transition-all duration-200"
+                    className={`mx-2 rounded-xl transition-all duration-300 ${location.pathname === item.url ? 'shadow-modern-lg transform scale-105' : 'hover:shadow-modern hover:transform hover:scale-102'} ${item.hoverGradient}`}
                   >
-                    <Link to={item.url} className="flex items-center gap-3">
-                      <div className={`p-1.5 rounded-lg ${location.pathname === item.url ? 'bg-gradient-accent text-white' : 'bg-modern-slate-100 text-modern-slate-600'}`}>
-                        <item.icon className="h-4 w-4" />
+                    <Link to={item.url} className="flex items-center gap-3 p-3">
+                      <div className={`p-2 rounded-lg ${location.pathname === item.url ? item.gradient : 'bg-modern-slate-100'} shadow-modern transition-all duration-300`}>
+                        <item.icon className={`h-4 w-4 ${location.pathname === item.url ? 'text-white' : 'text-modern-slate-600'}`} />
                       </div>
-                      <span className={`font-medium ${location.pathname === item.url ? 'text-orange-600' : 'text-modern-slate-700'}`}>
+                      <span className={`font-semibold transition-colors duration-300 ${location.pathname === item.url ? 'bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent' : 'text-modern-slate-700'}`}>
                         {item.title}
                       </span>
                     </Link>
@@ -214,12 +217,12 @@ export function AppSidebar() {
                 <SidebarMenuItem>
                   <SidebarMenuButton 
                     onClick={exitRoleSwitch} 
-                    className="mx-2 bg-gradient-warning hover:shadow-modern text-white rounded-lg transition-all duration-200"
+                    className="mx-2 bg-gradient-warning hover:shadow-modern-lg text-white rounded-xl transition-all duration-300 hover:transform hover:scale-105 p-3"
                   >
-                    <div className="p-1.5 rounded bg-white/20">
+                    <div className="p-2 rounded-lg bg-white/20 shadow-modern">
                       <Shield className="h-4 w-4 text-white" />
                     </div>
-                    <span className="font-medium">Exit Role Switch</span>
+                    <span className="font-semibold">Exit Role Switch</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
@@ -228,17 +231,21 @@ export function AppSidebar() {
         )}
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t border-modern-slate-200 bg-gradient-to-r from-modern-slate-50 to-white">
+      <SidebarFooter className="p-4 border-t border-modern-slate-200 bg-gradient-to-r from-modern-slate-50 via-modern-blue-50 to-modern-purple-50">
         <div className="flex items-center space-x-3 mb-3">
-          <Avatar className="h-10 w-10 border-2 border-modern-blue-100">
-            <AvatarFallback className="bg-gradient-primary text-white text-sm font-bold">
-              {user.username.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
+          <Avatar className="h-12 w-12 border-2 border-transparent bg-gradient-to-r from-modern-blue-500 to-modern-purple-500 p-0.5">
+            <div className="h-full w-full rounded-full bg-white flex items-center justify-center">
+              <AvatarFallback className="bg-gradient-primary text-white text-sm font-bold border-0">
+                {user.username.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </div>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-modern-slate-700 truncate">{user.username}</p>
-            <p className="text-xs text-modern-slate-500 capitalize font-medium">
-              {user.role}
+            <p className="text-sm font-bold bg-gradient-to-r from-modern-slate-700 to-modern-blue-700 bg-clip-text text-transparent truncate">{user.username}</p>
+            <p className="text-xs text-modern-slate-600 capitalize font-medium">
+              <span className="bg-gradient-to-r from-modern-emerald-600 to-modern-teal-600 bg-clip-text text-transparent">
+                {user.role}
+              </span>
               {isImpersonating && (
                 <span className="ml-1 text-orange-600 font-semibold">(Impersonating)</span>
               )}
@@ -249,7 +256,7 @@ export function AppSidebar() {
           variant="outline" 
           size="sm" 
           onClick={logout} 
-          className="w-full border-modern-slate-200 hover:bg-gradient-primary hover:text-white hover:border-transparent transition-all duration-200 font-medium"
+          className="w-full border-modern-slate-300 hover:bg-gradient-primary hover:text-white hover:border-transparent transition-all duration-300 font-semibold hover:shadow-modern transform hover:scale-105"
         >
           <LogOut className="h-4 w-4 mr-2" />
           Logout
