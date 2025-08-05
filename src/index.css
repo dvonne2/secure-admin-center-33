@@ -47,13 +47,19 @@
     --sidebar-border: 220 13% 88%;
     --sidebar-ring: 221.2 83.2% 53.3%;
 
-    /* Modern card gradients */
+    /* Extended modern gradient collection */
     --gradient-primary: linear-gradient(135deg, hsl(221.2 83.2% 53.3%) 0%, hsl(262.1 83.3% 57.8%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(173.4 80.4% 40%) 0%, hsl(195.7 95.9% 42.2%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(24.6 95% 53.1%) 0%, hsl(20.5 90.2% 48.2%) 100%);
     --gradient-success: linear-gradient(135deg, hsl(142.1 76.2% 36.3%) 0%, hsl(142.1 70.6% 45.3%) 100%);
     --gradient-warning: linear-gradient(135deg, hsl(47.9 95.8% 53.1%) 0%, hsl(45.4 93.4% 47.5%) 100%);
     --gradient-info: linear-gradient(135deg, hsl(199.4 89.1% 48.4%) 0%, hsl(217.2 91.2% 59.8%) 100%);
+    --gradient-emerald: linear-gradient(135deg, hsl(160 84% 39%) 0%, hsl(158 64% 52%) 100%);
+    --gradient-purple: linear-gradient(135deg, hsl(271 91% 65%) 0%, hsl(270 95% 75%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350 89% 60%) 0%, hsl(351 95% 71%) 100%);
+    --gradient-teal: linear-gradient(135deg, hsl(173 80% 40%) 0%, hsl(172 66% 50%) 100%);
+    --gradient-amber: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(43 96% 56%) 100%);
+    --gradient-indigo: linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(234 89% 74%) 100%);
   }
 
   .dark {
@@ -95,13 +101,19 @@
     --sidebar-border: 215 27.9% 20%;
     --sidebar-ring: 221.2 83.2% 53.3%;
 
-    /* Dark mode gradients */
+    /* Dark mode gradients with enhanced colors */
     --gradient-primary: linear-gradient(135deg, hsl(221.2 83.2% 45%) 0%, hsl(262.1 83.3% 50%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(173.4 80.4% 35%) 0%, hsl(195.7 95.9% 35%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(24.6 95% 45%) 0%, hsl(20.5 90.2% 40%) 100%);
     --gradient-success: linear-gradient(135deg, hsl(142.1 76.2% 30%) 0%, hsl(142.1 70.6% 38%) 100%);
     --gradient-warning: linear-gradient(135deg, hsl(47.9 95.8% 45%) 0%, hsl(45.4 93.4% 40%) 100%);
     --gradient-info: linear-gradient(135deg, hsl(199.4 89.1% 40%) 0%, hsl(217.2 91.2% 50%) 100%);
+    --gradient-emerald: linear-gradient(135deg, hsl(160 84% 32%) 0%, hsl(158 64% 45%) 100%);
+    --gradient-purple: linear-gradient(135deg, hsl(271 91% 58%) 0%, hsl(270 95% 68%) 100%);
+    --gradient-rose: linear-gradient(135deg, hsl(350 89% 53%) 0%, hsl(351 95% 64%) 100%);
+    --gradient-teal: linear-gradient(135deg, hsl(173 80% 33%) 0%, hsl(172 66% 43%) 100%);
+    --gradient-amber: linear-gradient(135deg, hsl(38 92% 43%) 0%, hsl(43 96% 49%) 100%);
+    --gradient-indigo: linear-gradient(135deg, hsl(239 84% 60%) 0%, hsl(234 89% 67%) 100%);
   }
 }
 
@@ -115,7 +127,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Custom gradient utilities */
+  /* Extended gradient utilities */
   .gradient-primary {
     background: var(--gradient-primary);
   }
@@ -140,6 +152,30 @@
     background: var(--gradient-info);
   }
 
+  .gradient-emerald {
+    background: var(--gradient-emerald);
+  }
+  
+  .gradient-purple {
+    background: var(--gradient-purple);
+  }
+  
+  .gradient-rose {
+    background: var(--gradient-rose);
+  }
+  
+  .gradient-teal {
+    background: var(--gradient-teal);
+  }
+  
+  .gradient-amber {
+    background: var(--gradient-amber);
+  }
+  
+  .gradient-indigo {
+    background: var(--gradient-indigo);
+  }
+
   /* Modern glassmorphism effect */
   .glass {
     backdrop-filter: blur(10px);
@@ -154,5 +190,42 @@
   
   .shadow-modern-lg {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Colorful hover effects */
+  .hover-gradient-emerald:hover {
+    background: var(--gradient-emerald);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-gradient-purple:hover {
+    background: var(--gradient-purple);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-gradient-rose:hover {
+    background: var(--gradient-rose);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-gradient-teal:hover {
+    background: var(--gradient-teal);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-gradient-amber:hover {
+    background: var(--gradient-amber);
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .hover-gradient-indigo:hover {
+    background: var(--gradient-indigo);
+    color: white;
+    transition: all 0.3s ease;
   }
 }

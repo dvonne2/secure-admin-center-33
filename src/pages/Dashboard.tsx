@@ -117,42 +117,51 @@ export default function Dashboard() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-modern-purple-600 to-modern-blue-600 bg-clip-text text-transparent">Dashboard</h1>
         <p className="text-muted-foreground">High-level system overview</p>
       </div>
 
-      {/* Top Metric Cards */}
+      {/* Top Metric Cards with colorful gradients */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metricCards.map((metric, index) => (
-          <Card key={index}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
-              <metric.icon className={`h-4 w-4 ${metric.color}`} />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{metric.value}</div>
-              <p className="text-xs text-muted-foreground">
-                <span className={metric.change.includes('+') ? 'text-green-600' : 'text-red-600'}>
-                  {metric.change}
-                </span>
-                {' '}from last month
-              </p>
-            </CardContent>
-          </Card>
-        ))}
+        {metricCards.map((metric, index) => {
+          const gradients = ['gradient-emerald', 'gradient-purple', 'gradient-rose', 'gradient-amber'];
+          const cardGradient = gradients[index % gradients.length];
+          
+          return (
+            <Card key={index} className="hover:shadow-modern-lg transition-all duration-300 border-0 overflow-hidden">
+              <div className={`h-2 ${cardGradient}`}></div>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">{metric.title}</CardTitle>
+                <div className={`p-2 rounded-lg bg-gradient-to-br from-modern-slate-100 to-modern-slate-200`}>
+                  <metric.icon className={`h-4 w-4 ${metric.color}`} />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{metric.value}</div>
+                <p className="text-xs text-muted-foreground">
+                  <span className={metric.change.includes('+') ? 'text-modern-emerald-600' : 'text-modern-rose-600'}>
+                    {metric.change}
+                  </span>
+                  {' '}from last month
+                </p>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Sales Trend Graph */}
-        <Card className="col-span-1">
+        {/* Sales Trend Graph with enhanced styling */}
+        <Card className="col-span-1 border-0 shadow-modern-lg">
+          <div className="h-2 gradient-indigo"></div>
           <CardHeader>
             <div className="flex justify-between items-center">
               <div>
-                <CardTitle>Sales Trend</CardTitle>
+                <CardTitle className="text-modern-indigo-700">Sales Trend</CardTitle>
                 <CardDescription>Order volume over time</CardDescription>
               </div>
               <Select value={timeFilter} onValueChange={setTimeFilter}>
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-32 border-modern-indigo-200 focus:border-modern-indigo-400">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -166,49 +175,72 @@ export default function Dashboard() {
           <CardContent>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={salesTrendData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis />
-                <Tooltip />
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="date" stroke="#64748b" />
+                <YAxis stroke="#64748b" />
+                <Tooltip 
+                  contentStyle={{ 
+                    background: 'linear-gradient(135deg, hsl(239 84% 67%) 0%, hsl(234 89% 74%) 100%)', 
+                    border: 'none', 
+                    borderRadius: '8px',
+                    color: 'white'
+                  }} 
+                />
                 <Line 
                   type="monotone" 
                   dataKey="orders" 
-                  stroke="#8884d8" 
-                  strokeWidth={2}
+                  stroke="url(#colorGradient)" 
+                  strokeWidth={3}
+                  dot={{ fill: '#8b5cf6', strokeWidth: 2, r: 4 }}
                 />
+                <defs>
+                  <linearGradient id="colorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="hsl(239 84% 67%)" />
+                    <stop offset="100%" stopColor="hsl(234 89% 74%)" />
+                  </linearGradient>
+                </defs>
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
-        {/* Recent Activity Feed */}
-        <Card className="col-span-1">
+        {/* Recent Activity Feed with enhanced styling */}
+        <Card className="col-span-1 border-0 shadow-modern-lg">
+          <div className="h-2 gradient-teal"></div>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
+            <CardTitle className="text-modern-teal-700">Recent Activity</CardTitle>
             <CardDescription>Last 20 system actions</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3 max-h-80 overflow-y-auto">
-              {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex flex-col space-y-1 p-3 rounded-lg bg-muted/50">
-                  <div className="flex justify-between items-start">
-                    <span className="text-sm font-medium">{activity.user}</span>
-                    <span className="text-xs text-muted-foreground">{activity.timestamp}</span>
+              {recentActivity.map((activity, index) => {
+                const colors = ['modern-emerald-50', 'modern-purple-50', 'modern-rose-50', 'modern-amber-50', 'modern-indigo-50'];
+                const borderColors = ['modern-emerald-200', 'modern-purple-200', 'modern-rose-200', 'modern-amber-200', 'modern-indigo-200'];
+                const bgColor = colors[index % colors.length];
+                const borderColor = borderColors[index % borderColors.length];
+                
+                return (
+                  <div key={activity.id} className={`flex flex-col space-y-1 p-3 rounded-lg bg-${bgColor} border border-${borderColor} hover:shadow-modern transition-all duration-200`}>
+                    <div className="flex justify-between items-start">
+                      <span className="text-sm font-medium text-modern-slate-700">{activity.user}</span>
+                      <span className="text-xs text-modern-slate-500">{activity.timestamp}</span>
+                    </div>
+                    <p className="text-sm text-modern-slate-600">{activity.description}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground">{activity.description}</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Low Stock Warning */}
-        <Card>
+        {/* Low Stock Warning with enhanced styling */}
+        <Card className="border-0 shadow-modern-lg">
+          <div className="h-2 gradient-rose"></div>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+            <CardTitle className="flex items-center gap-2 text-modern-rose-700">
+              <AlertTriangle className="h-5 w-5 text-modern-rose-500" />
               Low Stock Warnings
             </CardTitle>
             <CardDescription>Products with less than 10 units</CardDescription>
@@ -217,18 +249,18 @@ export default function Dashboard() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Product Name</TableHead>
-                  <TableHead>SKU</TableHead>
-                  <TableHead>Current Qty</TableHead>
+                  <TableHead className="text-modern-slate-700">Product Name</TableHead>
+                  <TableHead className="text-modern-slate-700">SKU</TableHead>
+                  <TableHead className="text-modern-slate-700">Current Qty</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {lowStockItems.map((item, index) => (
-                  <TableRow key={index} className="bg-red-50">
-                    <TableCell className="font-medium">{item.productName}</TableCell>
-                    <TableCell>{item.sku}</TableCell>
+                  <TableRow key={index} className="bg-modern-rose-50 hover:bg-modern-rose-100 transition-colors">
+                    <TableCell className="font-medium text-modern-slate-800">{item.productName}</TableCell>
+                    <TableCell className="text-modern-slate-600">{item.sku}</TableCell>
                     <TableCell>
-                      <Badge variant="destructive">{item.currentQty}</Badge>
+                      <Badge className="bg-gradient-rose text-white border-0">{item.currentQty}</Badge>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -237,29 +269,36 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        {/* Notifications Panel */}
-        <Card>
+        {/* Notifications Panel with enhanced styling */}
+        <Card className="border-0 shadow-modern-lg">
+          <div className="h-2 gradient-amber"></div>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Bell className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-2 text-modern-amber-700">
+              <Bell className="h-5 w-5 text-modern-amber-500" />
               Admin Notifications
             </CardTitle>
             <CardDescription>System alerts and updates</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {notifications.map((notification) => (
-                <div key={notification.id} className="flex items-start space-x-3 p-3 rounded-lg border">
-                  <div className={`w-2 h-2 rounded-full mt-2 ${
-                    notification.type === 'success' ? 'bg-green-500' :
-                    notification.type === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'
-                  }`} />
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">{notification.message}</p>
-                    <p className="text-xs text-muted-foreground">{notification.timestamp}</p>
+              {notifications.map((notification) => {
+                const colorMap = {
+                  success: { bg: 'modern-emerald-50', border: 'modern-emerald-200', dot: 'bg-modern-emerald-500' },
+                  warning: { bg: 'modern-amber-50', border: 'modern-amber-200', dot: 'bg-modern-amber-500' },
+                  info: { bg: 'modern-blue-50', border: 'modern-blue-200', dot: 'bg-modern-blue-500' }
+                };
+                const colors = colorMap[notification.type as keyof typeof colorMap];
+                
+                return (
+                  <div key={notification.id} className={`flex items-start space-x-3 p-3 rounded-lg bg-${colors.bg} border border-${colors.border} hover:shadow-modern transition-all duration-200`}>
+                    <div className={`w-2 h-2 rounded-full mt-2 ${colors.dot}`} />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-modern-slate-800">{notification.message}</p>
+                      <p className="text-xs text-modern-slate-600">{notification.timestamp}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </CardContent>
         </Card>
