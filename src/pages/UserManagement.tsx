@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -9,6 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Plus, Search, Edit, Trash2, UserPlus } from 'lucide-react';
 import { User } from '@/types/auth';
+import { AddUserModal } from '@/components/AddUserModal';
 
 // Mock users data
 const mockAllUsers: User[] = [
@@ -73,6 +73,7 @@ export default function UserManagement() {
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [showAddUserModal, setShowAddUserModal] = useState(false);
 
   if (!user || (user.role !== 'superadmin' && user.role !== 'admin')) {
     return (
@@ -117,7 +118,7 @@ export default function UserManagement() {
           </p>
         </div>
         {user.role === 'superadmin' && (
-          <Button>
+          <Button onClick={() => setShowAddUserModal(true)}>
             <UserPlus className="mr-2 h-4 w-4" />
             Add User
           </Button>
@@ -213,6 +214,11 @@ export default function UserManagement() {
           </Table>
         </CardContent>
       </Card>
+
+      <AddUserModal 
+        open={showAddUserModal} 
+        onOpenChange={setShowAddUserModal} 
+      />
     </div>
   );
 }
