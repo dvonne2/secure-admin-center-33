@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,12 +62,47 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Modern color palette
+				modern: {
+					blue: {
+						50: 'hsl(214 100% 97%)',
+						100: 'hsl(214 95% 93%)',
+						200: 'hsl(213 97% 87%)',
+						300: 'hsl(212 96% 78%)',
+						400: 'hsl(213 94% 68%)',
+						500: 'hsl(217 91% 60%)',
+						600: 'hsl(221 83% 53%)',
+						700: 'hsl(224 76% 48%)',
+						800: 'hsl(226 71% 40%)',
+						900: 'hsl(224 64% 33%)',
+					},
+					slate: {
+						50: 'hsl(210 40% 98%)',
+						100: 'hsl(210 40% 96%)',
+						200: 'hsl(214 32% 91%)',
+						300: 'hsl(213 27% 84%)',
+						400: 'hsl(215 20% 65%)',
+						500: 'hsl(215 16% 47%)',
+						600: 'hsl(215 19% 35%)',
+						700: 'hsl(215 25% 27%)',
+						800: 'hsl(217 33% 17%)',
+						900: 'hsl(222 84% 5%)',
+					}
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-secondary': 'var(--gradient-secondary)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-success': 'var(--gradient-success)',
+				'gradient-warning': 'var(--gradient-warning)',
+				'gradient-info': 'var(--gradient-info)',
 			},
 			keyframes: {
 				'accordion-down': {
