@@ -1,18 +1,7 @@
-import React from 'react';
 
-const AccountantDashboard = () => {
-  return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <iframe
-        src="https://vita-accountant-control-hub.vercel.app"
-        title="Vitalvida Accountant Control Hub"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        style={{ border: 'none' }}
-      />
-    </div>
-  );
-};
+    <div style={{ padding: '2rem', textAlign: 'center' }}>
+  <h2>Vitalvida Accountant Control Hub</h2>
+  <p>This portal will load here based on your role.</p>
+</div>
 
-export default AccountantDashboard;
+        
