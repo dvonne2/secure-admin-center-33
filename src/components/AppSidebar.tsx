@@ -57,18 +57,18 @@ const vitalvidaAutomationItems = [
 ];
 
 const businessRoles = [
-  { name: 'production', label: 'Logistics', description: 'Logistics Operations', gradient: 'bg-gradient-teal' },
-  { name: 'inventory', label: 'Inventory', description: 'Inventory Management', gradient: 'bg-gradient-emerald' },
-  { name: 'telesales', label: 'Telesales', description: 'Telesales Operations', gradient: 'bg-gradient-purple' },
-  { name: 'delivery_agent', label: 'Delivery', description: 'Delivery Operations', gradient: 'bg-gradient-amber' },
-  { name: 'accountant', label: 'Accountant', description: 'Accounting & Finance', gradient: 'bg-gradient-indigo' },
-  { name: 'cfo', label: 'Financial Controller', description: 'Financial Management', gradient: 'bg-gradient-rose' },
-  { name: 'manager', label: 'General Manager', description: 'Executive Management', gradient: 'bg-gradient-secondary' },
-  { name: 'ceo', label: 'CEO', description: 'Chief Executive Officer', gradient: 'bg-gradient-primary' },
+  { name: 'production', label: 'Logistics', description: 'Operations', gradient: 'bg-gradient-teal' },
+  { name: 'inventory', label: 'Inventory', description: 'Management', gradient: 'bg-gradient-emerald' },
+  { name: 'telesales', label: 'Telesales', description: 'Operations', gradient: 'bg-gradient-purple' },
+  { name: 'delivery_agent', label: 'Delivery', description: 'Operations', gradient: 'bg-gradient-amber' },
+  { name: 'accountant', label: 'Accountant', description: 'Finance', gradient: 'bg-gradient-indigo' },
+  { name: 'cfo', label: 'Financial Controller', description: 'Management', gradient: 'bg-gradient-rose' },
+  { name: 'manager', label: 'General Manager', description: 'Executive', gradient: 'bg-gradient-secondary' },
+  { name: 'ceo', label: 'CEO', description: 'Executive Officer', gradient: 'bg-gradient-primary' },
   { name: 'hr', label: 'HR', description: 'Human Resources', gradient: 'bg-gradient-success' },
-  { name: 'manufacturing', label: 'Manufacturing', description: 'Manufacturing Operations', gradient: 'bg-gradient-info' },
-  { name: 'media_buyer', label: 'Media Buyer', description: 'Media Buying & Marketing', gradient: 'bg-gradient-warning' },
-  { name: 'investor', label: 'Investor', description: 'Investment Management', gradient: 'bg-gradient-accent' },
+  { name: 'manufacturing', label: 'Manufacturing', description: 'Operations', gradient: 'bg-gradient-info' },
+  { name: 'media_buyer', label: 'Media Buyer', description: 'Marketing', gradient: 'bg-gradient-warning' },
+  { name: 'investor', label: 'Investor', description: 'Management', gradient: 'bg-gradient-accent' },
 ];
 
 type BusinessRoleType = 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
@@ -143,28 +143,28 @@ export function AppSidebar() {
                   <SidebarMenuItem key={role.name}>
                     <SidebarMenuButton 
                       onClick={() => handleRoleSwitch(role.name as BusinessRoleType)}
-                      className="mx-2 p-3 hover:bg-gradient-to-r hover:from-modern-slate-100 hover:to-modern-blue-50 hover:shadow-modern rounded-xl transition-all duration-300 hover:transform hover:scale-102"
+                      className="mx-2 p-2 hover:bg-gradient-to-r hover:from-modern-slate-100 hover:to-modern-blue-50 hover:shadow-modern rounded-xl transition-all duration-300 hover:transform hover:scale-102"
                     >
-                      <div className="flex items-center gap-3 w-full">
-                        <div className={`p-2 rounded-lg ${role.gradient} shadow-modern transform transition-all duration-300 hover:scale-110`}>
-                          {role.name === 'production' && <Truck className="h-4 w-4 text-white" />}
-                          {role.name === 'inventory' && <Package className="h-4 w-4 text-white" />}
-                          {role.name === 'telesales' && <Users className="h-4 w-4 text-white" />}
-                          {role.name === 'delivery_agent' && <Truck className="h-4 w-4 text-white" />}
-                          {role.name === 'accountant' && <FileText className="h-4 w-4 text-white" />}
-                          {role.name === 'cfo' && <FileText className="h-4 w-4 text-white" />}
-                          {role.name === 'manager' && <UserCog className="h-4 w-4 text-white" />}
-                          {role.name === 'ceo' && <Shield className="h-4 w-4 text-white" />}
-                          {role.name === 'hr' && <Users className="h-4 w-4 text-white" />}
-                          {role.name === 'manufacturing' && <Cog className="h-4 w-4 text-white" />}
-                          {role.name === 'media_buyer' && <Megaphone className="h-4 w-4 text-white" />}
-                          {role.name === 'investor' && <BarChart3 className="h-4 w-4 text-white" />}
+                      <div className="flex items-center gap-2.5 w-full">
+                        <div className={`p-1.5 rounded-lg ${role.gradient} shadow-modern transform transition-all duration-300 hover:scale-110 flex-shrink-0`}>
+                          {role.name === 'production' && <Truck className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'inventory' && <Package className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'telesales' && <Users className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'delivery_agent' && <Truck className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'accountant' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'cfo' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'manager' && <UserCog className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'ceo' && <Shield className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'hr' && <Users className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'manufacturing' && <Cog className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'media_buyer' && <Megaphone className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'investor' && <BarChart3 className="h-3.5 w-3.5 text-white" />}
                         </div>
-                        <div className="flex flex-col items-start">
-                          <span className="font-semibold text-modern-slate-700">{role.label}</span>
-                          <span className="text-xs text-modern-slate-500 font-medium">{role.description}</span>
+                        <div className="flex flex-col items-start min-w-0 flex-1">
+                          <span className="font-medium text-modern-slate-700 text-sm truncate w-full">{role.label}</span>
+                          <span className="text-xs text-modern-slate-500 font-normal truncate w-full">{role.description}</span>
                         </div>
-                        <ChevronRight className="ml-auto h-4 w-4 text-modern-slate-400 transition-transform duration-300 group-hover:transform group-hover:translate-x-1" />
+                        <ChevronRight className="ml-auto h-3.5 w-3.5 text-modern-slate-400 transition-transform duration-300 group-hover:transform group-hover:translate-x-1 flex-shrink-0" />
                       </div>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
