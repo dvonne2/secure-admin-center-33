@@ -105,7 +105,7 @@ export function MindsetContent() {
 
   return (
     <div className="mindset-transformation-content">
-      <style jsx>{`
+      <style>{`
         * {
             margin: 0;
             padding: 0;
@@ -777,6 +777,7 @@ export function MindsetContent() {
         </div>
 
         <div className="modules-grid">
+          {/* Day 1: The Power of Patience */}
           <div className="module-card" id="day1">
             <div className="module-header">
               <span className="module-number">1</span>
@@ -834,7 +835,7 @@ export function MindsetContent() {
               <li className="lesson-item">
                 <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
                 <div className="lesson-title">
-                  <span class="lesson-number">1.4</span>
+                  <span className="lesson-number">1.4</span>
                   Building Your Patience Muscle: Daily Practices
                 </div>
                 <div className="lesson-content">
@@ -864,6 +865,758 @@ export function MindsetContent() {
                 </div>
                 <div className="assessment-meta">
                   <span className="assessment-type">Reflection</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 2: Building a Long-Term Vision */}
+          <div className="module-card" id="day2">
+            <div className="module-header">
+              <span className="module-number">2</span>
+              <div className="module-title-text">
+                <h3 className="module-title">Building a Long-Term Vision</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Create a compelling 10-year career vision with specific, measurable milestones</li>
+                <li>Distinguish between short-term goals and long-term vision, understanding their relationship</li>
+                <li>Develop strategies to overcome vision blockers like fear, doubt, and daily distractions</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">2.1</span>
+                  Why lasting success is a marathon, not a sprint
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> Local example of someone who achieved greatness by playing the long game<br/>
+                  <strong>Activity:</strong> Vision board exercise - mapping out long-term career vision
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">2.2</span>
+                  SMART Goals vs. Vision: Understanding the Difference
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> How goals serve vision and why both are essential for success<br/>
+                  <strong>Activity:</strong> Converting vision statements into actionable goal frameworks
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">2.3</span>
+                  Breaking Down 10-Year Dreams into Daily Actions
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Reverse engineering success through systematic planning<br/>
+                  <strong>Activity:</strong> Create your personal success roadmap with quarterly milestones
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">2.4</span>
+                  Overcoming Vision Blockers: Fear, Doubt, and Distractions
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Identifying and neutralizing common obstacles to vision pursuit<br/>
+                  <strong>Activity:</strong> Personal obstacle assessment and mitigation strategy development
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">2.5</span>
+                  Creating Your Personal Mission Statement
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Crafting a guiding principle that aligns with your values and vision<br/>
+                  <strong>Activity:</strong> Mission statement workshop and peer feedback session
+                </div>
+              </li>
+              <li className="lesson-item exam-item knowledge-test">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Vision Setting & Strategic Planning</strong>
+                </div>
+                <div className="lesson-content">
+                  Knowledge test on vision creation principles and strategic planning methodologies
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Knowledge Test</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 3: The Strength of Teamwork */}
+          <div className="module-card" id="day3">
+            <div className="module-header">
+              <span className="module-number">3</span>
+              <div className="module-title-text">
+                <h3 className="module-title">The Strength of Teamwork</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Understand the five stages of team development and how to navigate each effectively</li>
+                <li>Identify different personality types in teams and adapt your communication style accordingly</li>
+                <li>Master conflict resolution techniques that strengthen rather than weaken team bonds</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">3.1</span>
+                  How teams achieve more together
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> The geese flying in V-formation and the lesson of shared effort<br/>
+                  <strong>Activity:</strong> Team challenge - collaborative game requiring everyone to work together
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">3.2</span>
+                  The Five Stages of Team Development
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Forming, Storming, Norming, Performing, and Adjourning phases<br/>
+                  <strong>Activity:</strong> Team development stage assessment and navigation strategies
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">3.3</span>
+                  Understanding Different Team Personality Types
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> DISC profiles, communication preferences, and working styles<br/>
+                  <strong>Activity:</strong> Personality assessment and team dynamics mapping
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">3.4</span>
+                  Communication Styles That Build vs. Break Teams
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Constructive feedback, active listening, and inclusive communication<br/>
+                  <strong>Activity:</strong> Communication style practice through role-playing scenarios
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">3.5</span>
+                  Conflict Resolution in Team Settings
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Mediation techniques, finding win-win solutions, and maintaining relationships<br/>
+                  <strong>Activity:</strong> Conflict resolution simulation and technique practice
+                </div>
+              </li>
+              <li className="lesson-item exam-item practical">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Teamwork Principles & Collaboration</strong>
+                </div>
+                <div className="lesson-content">
+                  Practical assessment through team collaboration exercise and peer evaluation
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Practical</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 4: Your Role in Team Success */}
+          <div className="module-card" id="day4">
+            <div className="module-header">
+              <span className="module-number">4</span>
+              <div className="module-title-text">
+                <h3 className="module-title">Your Role in Team Success</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Discover your natural team strengths and how to leverage them for maximum impact</li>
+                <li>Learn when to lead, when to follow, and when to support in different team situations</li>
+                <li>Build trust and credibility with teammates through consistent, reliable actions</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">4.1</span>
+                  Embracing your role and contributing to the bigger picture
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> A successful project where everyone's individual effort mattered<br/>
+                  <strong>Activity:</strong> Role-play - practicing different team roles to see how they fit
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">4.2</span>
+                  Discovering Your Natural Team Strengths
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Strengths assessment and team role identification<br/>
+                  <strong>Activity:</strong> Belbin Team Roles assessment and strategic positioning
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">4.3</span>
+                  When to Lead, When to Follow, When to Support
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Situational leadership and adaptive team behavior<br/>
+                  <strong>Activity:</strong> Scenario analysis for different team dynamics and responses
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">4.4</span>
+                  Taking Initiative Without Overstepping Boundaries
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Balanced leadership, respect for hierarchy, proactive contribution<br/>
+                  <strong>Activity:</strong> Initiative-taking scenarios and boundary-setting practice
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">4.5</span>
+                  Building Trust and Credibility with Teammates
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Consistency, reliability, transparent communication, follow-through<br/>
+                  <strong>Activity:</strong> Trust-building commitment exercise and accountability partnerships
+                </div>
+              </li>
+              <li className="lesson-item exam-item reflection">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Individual Contribution & Role Understanding</strong>
+                </div>
+                <div className="lesson-content">
+                  Reflection assessment on personal team contributions and role optimization strategies
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Reflection</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 5: Edwin Igbiti's Journey */}
+          <div className="module-card" id="day5">
+            <div className="module-header">
+              <span className="module-number">5</span>
+              <div className="module-title-text">
+                <h3 className="module-title">Edwin Igbiti's Journey</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Analyze successful career progression patterns and apply them to your own journey</li>
+                <li>Understand how to balance loyalty to current opportunities with future growth potential</li>
+                <li>Create a comprehensive professional development plan with mentorship strategies</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">5.1</span>
+                  Growing within an organization and achieving greatness through dedication
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> Edwin's journey from trainee to leadership and the principles that guided him<br/>
+                  <strong>Activity:</strong> Career progression timeline analysis and principle extraction
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">5.2</span>
+                  Other Nigerian Success Stories: Patterns of Growth
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Case studies of successful Nigerian professionals and their growth patterns<br/>
+                  <strong>Activity:</strong> Success pattern identification and personal application workshop
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">5.3</span>
+                  The Loyalty vs. Opportunity Balance
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Strategic career decisions, timing, and ethical considerations<br/>
+                  <strong>Activity:</strong> Decision matrix creation for career opportunity evaluation
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">5.4</span>
+                  Building Mentorship Relationships
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Finding mentors, maintaining relationships, reciprocal value creation<br/>
+                  <strong>Activity:</strong> Mentorship outreach strategy and relationship building plan
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">5.5</span>
+                  Creating Your Own Professional Development Plan
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Skills assessment, gap analysis, and systematic development planning<br/>
+                  <strong>Activity:</strong> Comprehensive PDP creation with measurable goals and timelines
+                </div>
+              </li>
+              <li className="lesson-item exam-item knowledge-test">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Career Growth & Dedication Principles</strong>
+                </div>
+                <div className="lesson-content">
+                  Knowledge test on professional development strategies and career advancement principles
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Knowledge Test</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 6: The Stonecutter's Persistence */}
+          <div className="module-card" id="day6">
+            <div className="module-header">
+              <span className="module-number">6</span>
+              <div className="module-title-text">
+                <h3 className="module-title">The Stonecutter's Persistence</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Master the psychology of habit formation and apply it to build consistent daily practices</li>
+                <li>Develop resilience strategies for bouncing back from setbacks and failures</li>
+                <li>Learn to track progress and celebrate small wins to maintain long-term motivation</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">6.1</span>
+                  The value of consistent effort and discipline
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> The stonecutter who strikes 99 times with no crack, then splits the stone on the 100th strike<br/>
+                  <strong>Activity:</strong> Personal consistency challenge design and commitment ceremony
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">6.2</span>
+                  The Psychology of Habit Formation
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Habit loops, cue-routine-reward cycles, and systematic behavior change<br/>
+                  <strong>Activity:</strong> Personal habit design workshop using the 21-66 day framework
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">6.3</span>
+                  Tracking Progress When Results Aren't Visible
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Leading indicators vs. lagging indicators, progress measurement systems<br/>
+                  <strong>Activity:</strong> Personal progress tracking system creation and implementation
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">6.4</span>
+                  Bouncing Back from Setbacks and Failures
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Resilience building, failure reframing, and recovery strategies<br/>
+                  <strong>Activity:</strong> Setback analysis exercise and resilience plan development
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">6.5</span>
+                  Celebrating Small Wins Along the Way
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Motivation psychology, milestone recognition, and momentum building<br/>
+                  <strong>Activity:</strong> Personal celebration system design and milestone mapping
+                </div>
+              </li>
+              <li className="lesson-item exam-item practical">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Persistence & Disciplined Action</strong>
+                </div>
+                <div className="lesson-content">
+                  Practical assessment through habit formation challenge and consistency demonstration
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Practical</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 7: Building Personal Accountability */}
+          <div className="module-card" id="day7">
+            <div className="module-header">
+              <span className="module-number">7</span>
+              <div className="module-title-text">
+                <h3 className="module-title">Building Personal Accountability</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Distinguish between excuses and legitimate reasons, taking ownership of outcomes</li>
+                <li>Create personal accountability systems that drive consistent performance</li>
+                <li>Master the art of giving and receiving constructive feedback for continuous improvement</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">7.1</span>
+                  Taking ownership of your growth and results
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> The executive who turned around their career by taking full responsibility<br/>
+                  <strong>Activity:</strong> Personal ownership assessment and commitment to accountability
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">7.2</span>
+                  The Difference Between Excuses and Reasons
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Language of responsibility, victim vs. owner mindset, solution orientation<br/>
+                  <strong>Activity:</strong> Excuse-to-ownership reframing exercise and language audit
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">7.3</span>
+                  Creating Personal Accountability Systems
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Self-monitoring tools, accountability partnerships, and systematic check-ins<br/>
+                  <strong>Activity:</strong> Personal accountability system design and implementation planning
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">7.4</span>
+                  How to Give and Receive Constructive Feedback
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Feedback frameworks, emotional regulation, and growth-oriented responses<br/>
+                  <strong>Activity:</strong> Feedback exchange practice and continuous improvement planning
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">7.5</span>
+                  Building an Accountability Network
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Peer accountability, mentorship circles, and professional support systems<br/>
+                  <strong>Activity:</strong> Accountability network mapping and relationship building strategy
+                </div>
+              </li>
+              <li className="lesson-item exam-item reflection">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Personal Responsibility & Ownership</strong>
+                </div>
+                <div className="lesson-content">
+                  Reflection assessment on accountability principles and personal responsibility commitments
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Reflection</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 8: The Long Game in Real Life */}
+          <div className="module-card" id="day8">
+            <div className="module-header">
+              <span className="module-number">8</span>
+              <div className="module-title-text">
+                <h3 className="module-title">The Long Game in Real Life</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Understand industry-specific career progression patterns and plan accordingly</li>
+                <li>Learn when to pivot career direction and when to persist through challenges</li>
+                <li>Create multiple career scenarios and backup plans for strategic flexibility</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">8.1</span>
+                  Patience and strategic career growth
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> Real-world examples of strategic patience in career development<br/>
+                  <strong>Activity:</strong> Strategic career mapping and timing analysis exercise
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">8.2</span>
+                  Industry-Specific Career Progression Patterns
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Understanding typical career paths, promotion cycles, and industry norms<br/>
+                  <strong>Activity:</strong> Industry research project and career pathway analysis
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">8.3</span>
+                  Building Skills vs. Building Relationships
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Balancing technical competence with networking and relationship building<br/>
+                  <strong>Activity:</strong> Personal development balance assessment and strategic planning
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">8.4</span>
+                  When to Pivot and When to Persist
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Decision frameworks for career transitions, risk assessment, and timing<br/>
+                  <strong>Activity:</strong> Career pivot decision matrix and scenario planning workshop
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">8.5</span>
+                  Creating Multiple Career Scenarios and Backup Plans
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Scenario planning, risk mitigation, and strategic flexibility<br/>
+                  <strong>Activity:</strong> Multi-scenario career planning and contingency strategy development
+                </div>
+              </li>
+              <li className="lesson-item exam-item knowledge-test">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Strategic Career Planning</strong>
+                </div>
+                <div className="lesson-content">
+                  Knowledge test on strategic career development and long-term planning principles
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Knowledge Test</span>
+                  <span className="assessment-points">100</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Day 9: Your Commitment to the Team */}
+          <div className="module-card" id="day9">
+            <div className="module-header">
+              <span className="module-number">9</span>
+              <div className="module-title-text">
+                <h3 className="module-title">Your Commitment to the Team</h3>
+              </div>
+              <div className="module-completion">
+                <div className="completion-checkbox" onClick={(e) => toggleModuleCompletion(e.target as HTMLElement)}></div>
+              </div>
+            </div>
+            
+            <div className="objectives-section">
+              <div className="objectives-title">Learning Objectives:</div>
+              <ul className="objectives-list">
+                <li>Learn to balance personal ambition with team goals for mutual success</li>
+                <li>Develop skills to be a culture carrier and positive team ambassador</li>
+                <li>Master techniques for handling peer pressure and negative influences effectively</li>
+              </ul>
+            </div>
+
+            <ul className="lesson-list">
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">9.1</span>
+                  Aligning personal goals with team success
+                </div>
+                <div className="lesson-content">
+                  <strong>Story:</strong> High-performing individuals who elevated their teams while advancing their careers<br/>
+                  <strong>Activity:</strong> Goal alignment exercise and win-win strategy development
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">9.2</span>
+                  Writing Effective Commitment Statements
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Commitment psychology, specific commitments, and public accountability<br/>
+                  <strong>Activity:</strong> Personal commitment statement creation and peer sharing
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">9.3</span>
+                  Balancing Personal Ambition with Team Goals
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Strategic positioning, mutual benefit creation, and ethical leadership<br/>
+                  <strong>Activity:</strong> Balance assessment and integration strategy development
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">9.4</span>
+                  Being a Culture Carrier and Team Ambassador
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Cultural leadership, positive influence, and organizational citizenship<br/>
+                  <strong>Activity:</strong> Culture ambassador role definition and implementation planning
+                </div>
+              </li>
+              <li className="lesson-item">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">9.5</span>
+                  Handling Peer Pressure and Negative Influences
+                </div>
+                <div className="lesson-content">
+                  <strong>Focus:</strong> Boundary setting, influence resistance, maintaining personal values<br/>
+                  <strong>Activity:</strong> Peer pressure response strategies and value-based decision making
+                </div>
+              </li>
+              <li className="lesson-item exam-item practical">
+                <div className="lesson-checkbox" onClick={(e) => toggleLessonCompletion(e.target as HTMLElement)}></div>
+                <div className="lesson-title">
+                  <span className="lesson-number">📝</span>
+                  <strong>Daily Assessment: Team Commitment & Goal Alignment</strong>
+                </div>
+                <div className="lesson-content">
+                  Practical assessment through commitment statement presentation and team goal alignment exercise
+                </div>
+                <div className="assessment-meta">
+                  <span className="assessment-type">Practical</span>
                   <span className="assessment-points">100</span>
                 </div>
               </li>
