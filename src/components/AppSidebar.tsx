@@ -45,7 +45,7 @@ const mainNavItems = [
   { title: "Dashboard", url: "/dashboard", icon: BarChart3, gradient: "bg-gradient-primary", hoverGradient: "hover-gradient-purple" },
   { title: "User Management", url: "/users", icon: UserCog, gradient: "bg-gradient-secondary", hoverGradient: "hover-gradient-teal" },
   { title: "System Logs", url: "/logs", icon: ClipboardList, gradient: "bg-gradient-accent", hoverGradient: "hover-gradient-amber" },
-  { title: "Form", url: "/forms", icon: FileText, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-blue" },
+  { title: "Forms", url: "/forms", icon: FileText, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-blue" },
   { title: "Settings", url: "/settings", icon: Settings, gradient: "bg-gradient-success", hoverGradient: "hover-gradient-emerald" },
   { title: "Database", url: "/database", icon: Database, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-indigo" },
 ];

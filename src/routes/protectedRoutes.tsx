@@ -12,6 +12,10 @@ import CalendarPage from "@/pages/CalendarPage";
 import ReportsPage from "@/pages/ReportsPage";
 import DatabasePage from "@/pages/DatabasePage";
 import FormPage from "@/pages/FormPage";
+import FormsListPage from "@/pages/forms/FormsListPage";
+import NewFormPage from "@/pages/forms/NewFormModal";
+import FormDesignerPage from "@/pages/forms/FormDesignerPage";
+import FormPreviewPage from "@/pages/forms/FormPreviewPage";
 
 export const protectedRoutes = [
   <Route key="dashboard" path="/dashboard" element={
@@ -44,9 +48,27 @@ export const protectedRoutes = [
     </ProtectedLayout>
   } />,
 
-  <Route key="forms" path="/forms" element={
+  <Route key="forms-list" path="/forms" element={
     <ProtectedLayout allowedRoles={['superadmin']}>
-      <FormPage />
+      <FormsListPage />
+    </ProtectedLayout>
+  } />,
+
+  <Route key="forms-new" path="/forms/new" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <NewFormPage />
+    </ProtectedLayout>
+  } />,
+
+  <Route key="forms-design" path="/forms/:id/design" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <FormDesignerPage />
+    </ProtectedLayout>
+  } />,
+
+  <Route key="forms-preview" path="/forms/:id/preview" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <FormPreviewPage />
     </ProtectedLayout>
   } />,
   
