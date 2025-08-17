@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { MindsetContent } from './MindsetContent';
 
 interface CurriculumContentProps {
   activeSection: string;
@@ -70,6 +70,11 @@ const contentData: Record<string, { title: string; description: string; details:
 };
 
 export function CurriculumContent({ activeSection }: CurriculumContentProps) {
+  // Show the detailed mindset transformation content for Foundation 1
+  if (activeSection === 'foundation-1') {
+    return <MindsetContent />;
+  }
+
   const content = contentData[activeSection];
 
   if (!content) {
