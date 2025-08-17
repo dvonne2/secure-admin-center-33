@@ -1,4 +1,3 @@
-
 import {
   Calendar,
   Users,
@@ -20,6 +19,8 @@ import {
   Box,
   Book,
   Megaphone,
+  GraduationCap,
+  IdCard,
 } from "lucide-react";
 import {
   Sidebar,
@@ -44,6 +45,7 @@ const mainNavItems = [
   { title: "Dashboard", url: "/dashboard", icon: BarChart3, gradient: "bg-gradient-primary", hoverGradient: "hover-gradient-purple" },
   { title: "User Management", url: "/users", icon: UserCog, gradient: "bg-gradient-secondary", hoverGradient: "hover-gradient-teal" },
   { title: "System Logs", url: "/logs", icon: ClipboardList, gradient: "bg-gradient-accent", hoverGradient: "hover-gradient-amber" },
+  { title: "Form", url: "/forms", icon: FileText, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-blue" },
   { title: "Settings", url: "/settings", icon: Settings, gradient: "bg-gradient-success", hoverGradient: "hover-gradient-emerald" },
   { title: "Database", url: "/database", icon: Database, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-indigo" },
 ];
@@ -57,6 +59,8 @@ const vitalvidaAutomationItems = [
 ];
 
 const businessRoles = [
+  { name: 'kyc', label: 'KYC', description: 'Compliance', gradient: 'bg-gradient-rose' },
+  { name: 'systemforce_academy', label: 'SystemForce Academy', description: 'Academy', gradient: 'bg-gradient-purple' },
   { name: 'production', label: 'Logistics', description: 'Operations', gradient: 'bg-gradient-teal' },
   { name: 'inventory', label: 'Inventory', description: 'Management', gradient: 'bg-gradient-emerald' },
   { name: 'telesales', label: 'Telesales', description: 'Operations', gradient: 'bg-gradient-purple' },
@@ -71,7 +75,7 @@ const businessRoles = [
   { name: 'investor', label: 'Investor', description: 'Management', gradient: 'bg-gradient-accent' },
 ];
 
-type BusinessRoleType = 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
+type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -147,6 +151,8 @@ export function AppSidebar() {
                     >
                       <div className="flex items-center gap-2.5 w-full">
                         <div className={`p-1.5 rounded-lg ${role.gradient} shadow-modern transform transition-all duration-300 hover:scale-110 flex-shrink-0`}>
+                          {role.name === 'kyc' && <IdCard className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'systemforce_academy' && <GraduationCap className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'production' && <Truck className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'inventory' && <Package className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'telesales' && <Users className="h-3.5 w-3.5 text-white" />}

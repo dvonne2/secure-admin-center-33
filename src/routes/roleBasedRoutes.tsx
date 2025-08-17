@@ -12,8 +12,22 @@ import HRDashboard from "@/pages/HRDashboard";
 import ManufacturingDashboard from "@/pages/ManufacturingDashboard";
 import MediaBuyerDashboard from "@/pages/MediaBuyerDashboard";
 import InvestorDashboard from "@/pages/InvestorDashboard";
+import KycRoleDashboard from "@/pages/KycRoleDashboard";
+import SystemForceAcademyDashboard from "@/pages/SystemForceAcademyDashboard";
 
 export const roleBasedRoutes = [
+  <Route key="kyc-dashboard" path="/dashboard/kyc" element={
+    <RoleBasedLayout allowedRoles={['kyc', 'superadmin']}>
+      <KycRoleDashboard />
+    </RoleBasedLayout>
+  } />,
+
+  <Route key="systemforce-academy-dashboard" path="/dashboard/systemforce_academy" element={
+    <RoleBasedLayout allowedRoles={['systemforce_academy', 'superadmin']}>
+      <SystemForceAcademyDashboard />
+    </RoleBasedLayout>
+  } />,
+
   <Route key="production-dashboard" path="/dashboard/production" element={
     <RoleBasedLayout allowedRoles={['production', 'superadmin']}>
       <ProductionDashboard />

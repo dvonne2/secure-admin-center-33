@@ -1,4 +1,3 @@
-
 import { Route } from "react-router-dom";
 import { ProtectedLayout } from "@/components/layouts/ProtectedLayout";
 import Dashboard from "@/pages/Dashboard";
@@ -12,6 +11,7 @@ import TasksPage from "@/pages/TasksPage";
 import CalendarPage from "@/pages/CalendarPage";
 import ReportsPage from "@/pages/ReportsPage";
 import DatabasePage from "@/pages/DatabasePage";
+import FormPage from "@/pages/FormPage";
 
 export const protectedRoutes = [
   <Route key="dashboard" path="/dashboard" element={
@@ -41,6 +41,12 @@ export const protectedRoutes = [
   <Route key="logs" path="/logs" element={
     <ProtectedLayout allowedRoles={['superadmin']}>
       <ActivityLogs />
+    </ProtectedLayout>
+  } />,
+
+  <Route key="forms" path="/forms" element={
+    <ProtectedLayout allowedRoles={['superadmin']}>
+      <FormPage />
     </ProtectedLayout>
   } />,
   
