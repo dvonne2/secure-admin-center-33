@@ -1,9 +1,19 @@
 
+import React, { useState } from 'react';
+import { CurriculumNavigation } from '@/components/academy/CurriculumNavigation';
+import { CurriculumContent } from '@/components/academy/CurriculumContent';
+import { FontLoader } from '@/components/academy/FontLoader';
+
 export default function SystemForceAcademyDashboard() {
+  const [activeSection, setActiveSection] = useState('foundation-1');
+
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-semibold">SystemForce Academy</h1>
-      <p className="mt-2 text-sm text-gray-500">Enter As Role → SystemForce Academy</p>
-    </div>
+    <>
+      <FontLoader />
+      <div className="flex h-screen bg-white">
+        <CurriculumNavigation />
+        <CurriculumContent activeSection={activeSection} />
+      </div>
+    </>
   );
 }

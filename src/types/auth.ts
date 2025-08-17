@@ -1,4 +1,3 @@
-
 export interface User {
   id: string;
   username: string;
@@ -17,4 +16,16 @@ export interface ActivityLog {
   timestamp: string;
   ipAddress: string;
   userAgent: string;
+}
+
+export interface LoginCredentials {
+  username: string;
+  password: string;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  login: (credentials: LoginCredentials) => Promise<void>;
+  logout: () => void;
+  isLoading: boolean;
 }
