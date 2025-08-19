@@ -15,55 +15,67 @@ const mockAllUsers: User[] = [
   {
     id: '1',
     username: 'superadmin',
+    name: 'Super Administrator',
     email: 'superadmin@company.com',
     role: 'superadmin',
     status: 'active',
     createdAt: '2024-01-01T00:00:00Z',
+    updatedAt: '2024-01-01T00:00:00Z',
     lastLogin: '2024-06-19T10:00:00Z'
   },
   {
     id: '2',
     username: 'admin',
+    name: 'Administrator',
     email: 'admin@company.com',
     role: 'admin',
     status: 'active',
     createdAt: '2024-01-02T00:00:00Z',
+    updatedAt: '2024-01-02T00:00:00Z',
     lastLogin: '2024-06-19T09:30:00Z'
   },
   {
     id: '3',
     username: 'manager',
+    name: 'Manager',
     email: 'manager@company.com',
     role: 'manager',
     status: 'active',
     createdAt: '2024-01-03T00:00:00Z',
+    updatedAt: '2024-01-03T00:00:00Z',
     lastLogin: '2024-06-19T09:00:00Z'
   },
   {
     id: '4',
     username: 'user',
+    name: 'Regular User',
     email: 'user@company.com',
     role: 'user',
     status: 'active',
     createdAt: '2024-01-04T00:00:00Z',
+    updatedAt: '2024-01-04T00:00:00Z',
     lastLogin: '2024-06-19T08:30:00Z'
   },
   {
     id: '5',
     username: 'jane.smith',
+    name: 'Jane Smith',
     email: 'jane.smith@company.com',
     role: 'manager',
     status: 'active',
     createdAt: '2024-02-01T00:00:00Z',
+    updatedAt: '2024-02-01T00:00:00Z',
     lastLogin: '2024-06-18T16:45:00Z'
   },
   {
     id: '6',
     username: 'bob.wilson',
+    name: 'Bob Wilson',
     email: 'bob.wilson@company.com',
     role: 'user',
     status: 'inactive',
     createdAt: '2024-03-15T00:00:00Z',
+    updatedAt: '2024-03-15T00:00:00Z',
     lastLogin: '2024-05-20T14:30:00Z'
   }
 ];
@@ -84,8 +96,9 @@ export default function UserManagement() {
   }
 
   const filteredUsers = mockAllUsers.filter(u => {
-    const matchesSearch = u.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         u.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = u.username?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         u.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         u.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesRole = roleFilter === 'all' || u.role === roleFilter;
     const matchesStatus = statusFilter === 'all' || u.status === statusFilter;
     

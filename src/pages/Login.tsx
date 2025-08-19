@@ -13,6 +13,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({
     username: '',
+    email: '',
     password: ''
   });
 
@@ -26,7 +27,12 @@ export default function Login() {
   };
 
   const handleDemoLogin = (username: string) => {
-    setCredentials({ username, password: username });
+    const selectedUser = mockUsers.find(u => u.username === username);
+    setCredentials({ 
+      username, 
+      email: selectedUser?.email || '',
+      password: username 
+    });
   };
 
   return (
@@ -100,7 +106,7 @@ export default function Login() {
                 key={user.id}
                 variant="outline"
                 className="w-full justify-start"
-                onClick={() => handleDemoLogin(user.username)}
+                onClick={() => handleDemoLogin(user.username!)}
               >
                 <span className="font-medium">{user.username}</span>
                 <span className="ml-auto text-xs text-muted-foreground">

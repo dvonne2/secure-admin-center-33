@@ -1,3 +1,4 @@
+
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { ActivityLog } from "@/types/auth";
@@ -21,7 +22,7 @@ export function useRoleSwitcher() {
     const activity: ActivityLog = {
       id: Date.now().toString(),
       userId: user.id,
-      username: user.username,
+      username: user.username || user.name,
       action: `Role impersonation: ${originalRole} → ${targetRole}`,
       timestamp: new Date().toISOString(),
       ipAddress: '192.168.1.100', // Mock IP
@@ -78,10 +79,12 @@ export function useRoleSwitcher() {
     const originalUser = {
       id: '1',
       username: 'superadmin',
+      name: 'Super Administrator',
       email: 'superadmin@company.com',
       role: 'superadmin' as const,
       status: 'active' as const,
       createdAt: '2024-01-01T00:00:00Z',
+      updatedAt: new Date().toISOString(),
       lastLogin: new Date().toISOString()
     };
 
@@ -97,7 +100,7 @@ export function useRoleSwitcher() {
     navigate('/dashboard');
   };
 
-  const isImpersonating = user?.username.includes('(as ') || false;
+  const isImpersonating = user?.username?.includes('(as ') || false;
 
   return {
     switchToRole,

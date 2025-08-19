@@ -32,7 +32,7 @@ export interface User {
 }
 
 export interface LoginCredentials {
-  email: string;
+  email?: string;
   username?: string;
   password: string;
 }
@@ -47,8 +47,9 @@ export interface AuthContextType {
 export interface ActivityLog {
   id: string;
   userId: string;
+  username?: string;
   action: string;
-  details: string;
+  details?: string;
   timestamp: string;
   ipAddress?: string;
   userAgent?: string;
