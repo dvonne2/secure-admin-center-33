@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -9,18 +8,24 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { FormSchema, FormField } from '@/modules/forms/types';
 import { getFormsService } from '@/modules/forms/storage/FormsService';
 import { fmtNGN } from '@/modules/forms/utils';
-import { ArrowLeft, Edit } from 'lucide-react';
+import { ArrowLeft, Edit, Code, Copy, Check } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function FormPreviewPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [form, setForm] = useState<FormSchema | null>(null);
   const [loading, setLoading] = useState(true);
+  const [embedDialogOpen, setEmbedDialogOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const formsService = getFormsService();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (id) {
@@ -36,6 +41,31 @@ export default function FormPreviewPage() {
       console.error('Failed to load form:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const generateEmbedCode = (formId: string) => {
+    return `<iframe src="https://erp.vitalvida.com/forms/${formId}" width="100%" height="600px" frameborder="0"></iframe>`;
+  };
+
+  const handleCopyEmbedCode = async () => {
+    if (!form) return;
+    
+    const embedCode = generateEmbedCode(form.meta.id);
+    try {
+      await navigator.clipboard.writeText(embedCode);
+      setCopied(true);
+      toast({
+        title: "Embed code copied!",
+        description: "The iframe code has been copied to your clipboard.",
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        title: "Copy failed",
+        description: "Please manually select and copy the code.",
+        variant: "destructive"
+      });
     }
   };
 
@@ -192,41 +222,102 @@ export default function FormPreviewPage() {
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate('/forms')}
-          >
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Forms
-          </Button>
-          <div>
-            <h1 className="text-2xl font-bold">{form.meta.name}</h1>
-            <p className="text-muted-foreground">Form Preview</p>
+    <TooltipProvider>
+      <div className="p-6 space-y-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/forms')}
+            >
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Forms
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold">{form.meta.name}</h1>
+              <p className="text-muted-foreground">Form Preview</p>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Dialog open={embedDialogOpen} onOpenChange={setEmbedDialogOpen}>
+              <DialogTrigger asChild>
+                <Button variant="outline">
+                  <Code className="h-4 w-4 mr-2" />
+                  Copy Embed Code
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px]">
+                <DialogHeader>
+                  <DialogTitle>Embed Form Code</DialogTitle>
+                  <DialogDescription>
+                    Copy the iframe code below and paste it into your WordPress page to embed this form.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="embed-code">Iframe Code</Label>
+                    <div className="relative">
+                      <Input
+                        id="embed-code"
+                        value={generateEmbedCode(form.meta.id)}
+                        readOnly
+                        className="font-mono text-sm pr-12"
+                        onClick={(e) => e.currentTarget.select()}
+                      />
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="absolute right-1 top-1 h-8 w-8 p-0"
+                            onClick={handleCopyEmbedCode}
+                          >
+                            {copied ? (
+                              <Check className="h-4 w-4 text-green-600" />
+                            ) : (
+                              <Copy className="h-4 w-4" />
+                            )}
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Paste this code into your WordPress page to embed the form</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  <div className="bg-muted p-4 rounded-lg">
+                    <h4 className="font-medium mb-2">How to use:</h4>
+                    <ol className="text-sm text-muted-foreground space-y-1">
+                      <li>1. Copy the iframe code above</li>
+                      <li>2. Paste it into your WordPress page or post editor</li>
+                      <li>3. The form will display embedded on your website</li>
+                    </ol>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+            <Button onClick={() => navigate(`/forms/${id}/design`)}>
+              <Edit className="h-4 w-4 mr-2" />
+              Edit Form
+            </Button>
           </div>
         </div>
-        <Button onClick={() => navigate(`/forms/${id}/design`)}>
-          <Edit className="h-4 w-4 mr-2" />
-          Edit Form
-        </Button>
-      </div>
 
-      <div className="max-w-4xl mx-auto">
-        <Card>
-          <CardHeader>
-            <CardTitle>{form.meta.name}</CardTitle>
-            {form.meta.description && (
-              <p className="text-muted-foreground">{form.meta.description}</p>
-            )}
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {form.fields.map(renderField)}
-          </CardContent>
-        </Card>
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardHeader>
+              <CardTitle>{form.meta.name}</CardTitle>
+              {form.meta.description && (
+                <p className="text-muted-foreground">{form.meta.description}</p>
+              )}
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {form.fields.map(renderField)}
+            </CardContent>
+          </Card>
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 }
