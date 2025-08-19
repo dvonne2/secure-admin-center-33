@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Save } from 'lucide-react';
-import { SettingsSidebar } from '@/components/settings/SettingsSidebar';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { GeneralBrandingTab } from '@/components/settings/GeneralBrandingTab';
 import { SecurityAccessTab } from '@/components/settings/SecurityAccessTab';
 import { PermissionsDefaultsTab } from '@/components/settings/PermissionsDefaultsTab';
@@ -53,8 +53,8 @@ export default function Settings() {
     }
   };
 
-  const renderTabContent = () => {
-    switch (activeTab) {
+  const renderTabContent = (tabValue: string) => {
+    switch (tabValue as SettingsTab) {
       case 'general-branding':
         return <GeneralBrandingTab onDataChange={() => setHasChanges(true)} />;
       case 'security-access':
@@ -91,20 +91,46 @@ export default function Settings() {
         </p>
       </div>
 
-      {/* Two-column layout */}
-      <div className="flex gap-6">
-        {/* Left sidebar navigation */}
-        <div className="w-64 flex-shrink-0">
-          <SettingsSidebar 
-            activeTab={activeTab} 
-            onTabChange={setActiveTab}
-          />
-        </div>
+      {/* Horizontal Tabs Layout */}
+      <Tabs defaultValue="general-branding" onValueChange={(value) => setActiveTab(value as SettingsTab)}>
+        <TabsList className="grid w-full grid-cols-4 lg:grid-cols-8 mb-6">
+          <TabsTrigger value="general-branding" className="text-xs">General</TabsTrigger>
+          <TabsTrigger value="security-access" className="text-xs">Security</TabsTrigger>
+          <TabsTrigger value="permissions-defaults" className="text-xs">Permissions</TabsTrigger>
+          <TabsTrigger value="notifications" className="text-xs">Notifications</TabsTrigger>
+          <TabsTrigger value="integrations" className="text-xs">Integrations</TabsTrigger>
+          <TabsTrigger value="data-compliance" className="text-xs">Data</TabsTrigger>
+          <TabsTrigger value="automation" className="text-xs">Automation</TabsTrigger>
+          <TabsTrigger value="embeds-domains" className="text-xs">Embeds</TabsTrigger>
+        </TabsList>
 
-        {/* Right content panel */}
-        <div className="flex-1 relative">
+        {/* Content Area */}
+        <div className="relative">
           <div className="pb-20">
-            {renderTabContent()}
+            <TabsContent value="general-branding">
+              {renderTabContent('general-branding')}
+            </TabsContent>
+            <TabsContent value="security-access">
+              {renderTabContent('security-access')}
+            </TabsContent>
+            <TabsContent value="permissions-defaults">
+              {renderTabContent('permissions-defaults')}
+            </TabsContent>
+            <TabsContent value="notifications">
+              {renderTabContent('notifications')}
+            </TabsContent>
+            <TabsContent value="integrations">
+              {renderTabContent('integrations')}
+            </TabsContent>
+            <TabsContent value="data-compliance">
+              {renderTabContent('data-compliance')}
+            </TabsContent>
+            <TabsContent value="automation">
+              {renderTabContent('automation')}
+            </TabsContent>
+            <TabsContent value="embeds-domains">
+              {renderTabContent('embeds-domains')}
+            </TabsContent>
           </div>
           
           {/* Sticky save button */}
@@ -128,7 +154,7 @@ export default function Settings() {
             </div>
           )}
         </div>
-      </div>
+      </Tabs>
     </div>
   );
 }
