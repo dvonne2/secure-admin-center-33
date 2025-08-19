@@ -45,7 +45,7 @@ export default function FormPreviewPage() {
   };
 
   const generateEmbedCode = (formId: string) => {
-    return `<iframe src="https://erp.vitalvida.com/forms/${formId}" width="100%" height="600px" frameborder="0"></iframe>`;
+    return `<iframe src="https://erp.vitalvida.ng/forms/${formId}" width="100%" height="600px" frameborder="0"></iframe>`;
   };
 
   const handleCopyEmbedCode = async () => {
