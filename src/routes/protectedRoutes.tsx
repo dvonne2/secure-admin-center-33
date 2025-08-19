@@ -16,6 +16,7 @@ import FormsListPage from "@/pages/forms/FormsListPage";
 import NewFormPage from "@/pages/forms/NewFormModal";
 import FormDesignerPage from "@/pages/forms/FormDesignerPage";
 import FormPreviewPage from "@/pages/forms/FormPreviewPage";
+import Settings from "@/pages/Settings";
 
 export const protectedRoutes = [
   <Route key="dashboard" path="/dashboard" element={
@@ -75,6 +76,12 @@ export const protectedRoutes = [
   <Route key="system-settings" path="/system/settings" element={
     <ProtectedLayout allowedRoles={['superadmin', 'admin']}>
       <SystemSettings />
+    </ProtectedLayout>
+  } />,
+  
+  <Route key="settings" path="/settings" element={
+    <ProtectedLayout>
+      <Settings />
     </ProtectedLayout>
   } />,
   
