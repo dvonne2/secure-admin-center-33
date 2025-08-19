@@ -12,7 +12,7 @@ interface EmbedsDomainsTabProps {
 
 export function EmbedsDomainsTab({ onDataChange }: EmbedsDomainsTabProps) {
   const [settings, setSettings] = useState({
-    allowedDomains: 'https://vitalvida.ng\nhttps://www.vitalvida.ng\nhttps://app.vitalvida.ng',
+    allowedDomains: 'https://vitalvida.com\nhttps://www.vitalvida.com\nhttps://app.vitalvida.com',
     clickjackingProtection: true
   });
 
