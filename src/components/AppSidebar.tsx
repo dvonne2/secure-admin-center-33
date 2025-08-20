@@ -119,13 +119,6 @@ const roleBasedNavItems: NavItem[] = [
     route: '/dashboard/cfo'
   },
   {
-    title: "CFO Chief",
-    subtitle: "Chief Financial Officer",
-    icon: DollarSign,
-    targetRole: 'cfo_chief',
-    route: '/dashboard/cfo-chief'
-  },
-  {
     title: "Business Analysis",
     subtitle: "Analytics",
     icon: BarChart,
@@ -133,7 +126,7 @@ const roleBasedNavItems: NavItem[] = [
     route: '/dashboard/business-analysis'
   },
   {
-    title: "Managerial Dashboard",
+    title: "General Manager",
     subtitle: "Team Performance",
     icon: Users,
     targetRole: 'manager',

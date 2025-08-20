@@ -1,6 +1,6 @@
 
 import { Route } from "react-router-dom";
-import { RoleBasedLayout } from "@/components/layouts/RoleBasedLayout";
+import { BusinessRoleLayout } from "@/components/layouts/BusinessRoleLayout";
 import ProductionDashboard from "@/pages/ProductionDashboard";
 import InventoryDashboard from "@/pages/InventoryDashboard";
 import TelesalesDashboard from "@/pages/TelesalesDashboard";
@@ -17,80 +17,80 @@ import SystemForceAcademyDashboard from "@/pages/SystemForceAcademyDashboard";
 
 export const roleBasedRoutes = [
   <Route key="kyc-dashboard" path="/dashboard/kyc" element={
-    <RoleBasedLayout allowedRoles={['kyc', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['kyc', 'superadmin']}>
       <KycRoleDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="systemforce-academy-dashboard" path="/dashboard/systemforce_academy" element={
-    <RoleBasedLayout allowedRoles={['systemforce_academy', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['systemforce_academy', 'superadmin']}>
       <SystemForceAcademyDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="production-dashboard" path="/dashboard/production" element={
-    <RoleBasedLayout allowedRoles={['production', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['production', 'superadmin']}>
       <ProductionDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
   
   <Route key="inventory-dashboard" path="/dashboard/inventory" element={
-    <RoleBasedLayout allowedRoles={['inventory', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['inventory', 'superadmin']}>
       <InventoryDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
   
   <Route key="telesales-dashboard" path="/dashboard/telesales" element={
-    <RoleBasedLayout allowedRoles={['telesales', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['telesales', 'superadmin']}>
       <TelesalesDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
   
   <Route key="delivery-agent-dashboard" path="/dashboard/delivery_agent" element={
-    <RoleBasedLayout allowedRoles={['delivery_agent', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['delivery_agent', 'superadmin']}>
       <DeliveryAgentDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="accountant-dashboard" path="/dashboard/accountant" element={
-    <RoleBasedLayout allowedRoles={['accountant', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['accountant', 'superadmin']}>
       <AccountantDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="cfo-dashboard" path="/dashboard/cfo" element={
-    <RoleBasedLayout allowedRoles={['cfo', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['cfo', 'superadmin']}>
       <CFODashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="ceo-dashboard" path="/dashboard/ceo" element={
-    <RoleBasedLayout allowedRoles={['ceo', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['ceo', 'superadmin']}>
       <CEODashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="hr-dashboard" path="/dashboard/hr" element={
-    <RoleBasedLayout allowedRoles={['hr', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['hr', 'superadmin']}>
       <HRDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="manufacturing-dashboard" path="/dashboard/manufacturing" element={
-    <RoleBasedLayout allowedRoles={['manufacturing', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['manufacturing', 'superadmin']}>
       <ManufacturingDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="media-buyer-dashboard" path="/dashboard/media_buyer" element={
-    <RoleBasedLayout allowedRoles={['media_buyer', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['media_buyer', 'superadmin']}>
       <MediaBuyerDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />,
 
   <Route key="investor-dashboard" path="/dashboard/investor" element={
-    <RoleBasedLayout allowedRoles={['investor', 'superadmin']}>
+    <BusinessRoleLayout allowedBusinessRoles={['investor', 'superadmin']}>
       <InvestorDashboard />
-    </RoleBasedLayout>
+    </BusinessRoleLayout>
   } />
 ];
