@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   LayoutDashboard,
@@ -31,7 +32,7 @@ interface NavItem {
   subtitle: string;
   icon: React.ComponentType<any>;
   route: string;
-  targetRole?: BusinessRole;
+  targetRole?: BusinessRole | 'superadmin';
 }
 
 const roleBasedNavItems: NavItem[] = [
@@ -104,16 +105,16 @@ const roleBasedNavItems: NavItem[] = [
     route: '/dashboard/delivery-agent'
   },
   {
-    title: "Accounting Overview",
-    subtitle: "Financial Data Analysis",
+    title: "Financial Controller",
+    subtitle: "Auditor",
     icon: Calculator,
     targetRole: 'accountant',
     route: '/dashboard/accountant'
   },
   {
-    title: "CFO Insights",
-    subtitle: "Financial Strategy",
-    icon: TrendingUp,
+    title: "CFO",
+    subtitle: "Chief Financial Officer",
+    icon: DollarSign,
     targetRole: 'cfo',
     route: '/dashboard/cfo'
   },
@@ -121,12 +122,12 @@ const roleBasedNavItems: NavItem[] = [
     title: "CFO Chief",
     subtitle: "Chief Financial Officer",
     icon: DollarSign,
-    targetRole: 'cfo_chief' as BusinessRole,
+    targetRole: 'cfo_chief',
     route: '/dashboard/cfo-chief'
   },
   {
     title: "Business Analysis",
-    subtitle: "Analyze Business data",
+    subtitle: "Analytics",
     icon: BarChart,
     targetRole: 'business_analysis',
     route: '/dashboard/business-analysis'
@@ -213,8 +214,8 @@ export function AppSidebar() {
                   <>
                     {roleBasedNavItems.filter(item => item.targetRole && item.targetRole !== 'superadmin').map(item => (
                       <DropdownMenuItem key={item.targetRole} onClick={() => {
-                        if (user) {
-                          switchToRole({ targetRole: item.targetRole!, originalRole: user.role });
+                        if (user && item.targetRole !== 'superadmin') {
+                          switchToRole({ targetRole: item.targetRole as BusinessRole, originalRole: user.role });
                         }
                       }}>
                         Impersonate as {item.title}
