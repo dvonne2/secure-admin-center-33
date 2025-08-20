@@ -96,6 +96,14 @@ const roleBasedNavItems: NavItem[] = [
     color: 'bg-purple-500'
   },
   {
+    title: "System Automation",
+    subtitle: "Automation",
+    icon: Activity,
+    targetRole: 'system_automation',
+    route: '/dashboard/system-automation',
+    color: 'bg-orange-500'
+  },
+  {
     title: "Logistics",
     subtitle: "Operations",
     icon: Truck,

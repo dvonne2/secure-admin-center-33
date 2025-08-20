@@ -17,7 +17,8 @@ export interface User {
 
 export type BusinessRole = 
   | 'kyc' 
-  | 'systemforce_academy' 
+  | 'systemforce_academy'
+  | 'system_automation'
   | 'production' 
   | 'inventory' 
   | 'telesales' 
@@ -26,6 +27,7 @@ export type BusinessRole =
   | 'cfo' 
   | 'cfo_chief'
   | 'business_analysis'
+  | 'auditor'
   | 'manager'
   | 'ceo' 
   | 'hr' 
