@@ -9,7 +9,7 @@ import {
   AlignLeft, 
   Mail, 
   Phone, 
-  RadioButton, 
+  Radio, 
   CheckSquare, 
   ChevronDown, 
   Star, 
@@ -33,7 +33,7 @@ const getQuestionIcon = (type: string) => {
     case 'textarea': return AlignLeft;
     case 'email': return Mail;
     case 'phone': return Phone;
-    case 'multiple_choice': return RadioButton;
+    case 'multiple_choice': return Radio;
     case 'checkboxes': return CheckSquare;
     case 'dropdown': return ChevronDown;
     case 'rating': return Star;
