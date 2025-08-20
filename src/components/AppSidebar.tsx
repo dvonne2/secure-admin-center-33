@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   LayoutDashboard,
@@ -26,6 +25,7 @@ import { useRoleSwitcher } from '@/hooks/useRoleSwitcher';
 import { Button } from '@/components/ui/button';
 import { Activity } from 'lucide-react';
 import { BusinessRole } from '@/types/auth';
+import { SidebarContent, SidebarHeader, SidebarFooter, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
 
 interface NavItem {
   title: string;
@@ -179,8 +179,8 @@ export function AppSidebar() {
   });
 
   return (
-    <div className="flex flex-col h-full bg-gray-50 border-r py-4">
-      <div className="px-6 mb-4">
+    <>
+      <SidebarHeader>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="gap-2 w-full justify-start px-2">
@@ -222,37 +222,45 @@ export function AppSidebar() {
             <DropdownMenuItem onClick={() => logout()}>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      </div>
+      </SidebarHeader>
 
-      <div className="flex-grow px-6">
-        <ul className="space-y-1">
+      <SidebarContent>
+        <SidebarMenu>
           {filteredNavItems.map((item) => (
-            <li key={item.title}>
-              <NavLink
-                to={item.route}
-                className={({ isActive }) =>
-                  `flex items-center space-x-2 rounded-md p-2 text-sm font-medium hover:bg-gray-100 transition-colors ${
-                    isActive ? 'bg-gray-100 font-bold' : 'text-gray-600'
-                  }`
-                }
-              >
-                <item.icon className="h-4 w-4" />
-                <span>{item.title}</span>
-              </NavLink>
-            </li>
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton asChild>
+                <NavLink
+                  to={item.route}
+                  className={({ isActive }) =>
+                    `flex items-center space-x-2 rounded-md p-2 text-sm font-medium hover:bg-gray-100 transition-colors ${
+                      isActive ? 'bg-gray-100 font-bold' : 'text-gray-600'
+                    }`
+                  }
+                >
+                  <item.icon className="h-4 w-4" />
+                  <span>{item.title}</span>
+                </NavLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           ))}
-        </ul>
-      </div>
+        </SidebarMenu>
+      </SidebarContent>
 
-      <div className="px-6 pt-4">
-        <NavLink
-          to="/settings"
-          className="flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
-        >
-          <Settings className="h-4 w-4" />
-          <span>Settings</span>
-        </NavLink>
-      </div>
-    </div>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <NavLink
+                to="/settings"
+                className="flex items-center space-x-2 rounded-md p-2 text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+              >
+                <Settings className="h-4 w-4" />
+                <span>Settings</span>
+              </NavLink>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
+    </>
   );
 }
