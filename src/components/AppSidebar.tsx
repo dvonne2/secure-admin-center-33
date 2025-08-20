@@ -1,3 +1,4 @@
+
 import {
   Calendar,
   Users,
@@ -21,6 +22,8 @@ import {
   Megaphone,
   GraduationCap,
   IdCard,
+  DollarSign,
+  BarChart,
 } from "lucide-react";
 import {
   Sidebar,
@@ -66,7 +69,9 @@ const businessRoles = [
   { name: 'telesales', label: 'Telesales', description: 'Operations', gradient: 'bg-gradient-purple' },
   { name: 'delivery_agent', label: 'Delivery', description: 'Operations', gradient: 'bg-gradient-amber' },
   { name: 'accountant', label: 'Accountant', description: 'Finance', gradient: 'bg-gradient-indigo' },
-  { name: 'cfo', label: 'Financial Controller', description: 'Management', gradient: 'bg-gradient-rose' },
+  { name: 'cfo', label: 'Financial Controller', description: 'Auditor', gradient: 'bg-gradient-rose' },
+  { name: 'cfo_chief', label: 'CFO', description: 'Chief Financial Officer', gradient: 'bg-gradient-rose' },
+  { name: 'business_analysis', label: 'Business Analysis', description: 'Analytics', gradient: 'bg-gradient-info' },
   { name: 'manager', label: 'General Manager', description: 'Executive', gradient: 'bg-gradient-secondary' },
   { name: 'ceo', label: 'CEO', description: 'Executive Officer', gradient: 'bg-gradient-primary' },
   { name: 'hr', label: 'HR', description: 'Human Resources', gradient: 'bg-gradient-success' },
@@ -75,7 +80,7 @@ const businessRoles = [
   { name: 'investor', label: 'Investor', description: 'Management', gradient: 'bg-gradient-accent' },
 ];
 
-type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
+type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'cfo_chief' | 'business_analysis' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -159,6 +164,8 @@ export function AppSidebar() {
                           {role.name === 'delivery_agent' && <Truck className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'accountant' && <FileText className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'cfo' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'cfo_chief' && <DollarSign className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'business_analysis' && <BarChart className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'manager' && <UserCog className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'ceo' && <Shield className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'hr' && <Users className="h-3.5 w-3.5 text-white" />}
