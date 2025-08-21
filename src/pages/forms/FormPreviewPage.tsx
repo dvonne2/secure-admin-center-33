@@ -70,61 +70,106 @@ export default function FormPreviewPage() {
   };
 
   const renderField = (field: FormField) => {
-    switch (field.type) {
-      case 'section':
-        return (
-          <div key={field.id} className="py-4">
-            <div
-              className="text-xl font-bold text-center py-4 rounded-lg"
-              style={{
-                background: form?.meta.theme.headerGradient 
-                  ? `linear-gradient(135deg, ${form.meta.theme.headerGradient.from}, ${form.meta.theme.headerGradient.to})`
-                  : form?.meta.theme.primary,
-                color: 'white'
-              }}
-            >
-              {field.label}
-            </div>
-          </div>
-        );
+    const isRequired = field.required;
+    
+    // Section headers
+    if (field.type === 'section') {
+      return (
+        <div key={field.id} className="border-b-2 border-orange-200 pb-3 mb-6">
+          <h2 className="text-xl font-bold text-gray-900">{field.label}</h2>
+          {field.helpText && (
+            <p className="text-gray-600 mt-1">{field.helpText}</p>
+          )}
+        </div>
+      );
+    }
 
+    const label = field.label ? (
+      <Label className="text-sm font-semibold text-gray-800 mb-2 block">
+        {field.label}
+        {isRequired && <span className="text-red-500 ml-1">*</span>}
+      </Label>
+    ) : null;
+
+    const helpText = field.helpText ? (
+      <p className="text-sm text-gray-500 mt-1">{field.helpText}</p>
+    ) : null;
+
+    switch (field.type) {
       case 'text':
-      case 'email':
-      case 'phone':
         return (
           <div key={field.id} className="space-y-2">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Input placeholder={field.placeholder} />
-            {field.helpText && (
-              <p className="text-sm text-muted-foreground">{field.helpText}</p>
-            )}
+            {label}
+            <Input 
+              placeholder={field.placeholder} 
+              required={isRequired}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
           </div>
         );
 
       case 'textarea':
         return (
           <div key={field.id} className="space-y-2">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Textarea placeholder={field.placeholder} />
-            {field.helpText && (
-              <p className="text-sm text-muted-foreground">{field.helpText}</p>
-            )}
+            {label}
+            <Textarea 
+              placeholder={field.placeholder} 
+              required={isRequired}
+              rows={4}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
+          </div>
+        );
+
+      case 'email':
+        return (
+          <div key={field.id} className="space-y-2">
+            {label}
+            <Input 
+              type="email"
+              placeholder={field.placeholder || "Enter your email"} 
+              required={isRequired}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
+          </div>
+        );
+
+      case 'phone':
+        return (
+          <div key={field.id} className="space-y-2">
+            {label}
+            <div className="flex gap-2">
+              <Select>
+                <SelectTrigger className="w-32 border-gray-300">
+                  <SelectValue placeholder="+234" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="+234">🇳🇬 +234</SelectItem>
+                  <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                  <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                </SelectContent>
+              </Select>
+              <Input 
+                type="tel"
+                placeholder={field.placeholder || "Enter phone number"} 
+                required={isRequired}
+                className="flex-1 border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+              />
+            </div>
+            {helpText}
           </div>
         );
 
       case 'select':
         return (
           <div key={field.id} className="space-y-2">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Select>
-              <SelectTrigger>
-                <SelectValue placeholder="Select an option" />
+            {label}
+            <Select required={isRequired}>
+              <SelectTrigger className="border-gray-300 focus:border-orange-400 focus:ring-orange-400">
+                <SelectValue placeholder={field.placeholder || "Select an option"} />
               </SelectTrigger>
               <SelectContent>
                 {field.options?.map((option) => (
@@ -134,65 +179,81 @@ export default function FormPreviewPage() {
                 ))}
               </SelectContent>
             </Select>
+            {helpText}
           </div>
         );
 
       case 'radio':
         return (
           <div key={field.id} className="space-y-4">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <RadioGroup>
+            {label}
+            <RadioGroup required={isRequired} className="space-y-3">
               {field.options?.map((option) => (
-                <div key={option.value} className="flex items-center space-x-2 p-3 border rounded-lg">
-                  <RadioGroupItem value={option.value} id={option.value} />
-                  <div className="flex-1">
-                    <Label htmlFor={option.value} className="font-medium cursor-pointer">
-                      {option.label}
-                    </Label>
-                    {option.sublabel && (
-                      <p className="text-sm text-muted-foreground">{option.sublabel}</p>
-                    )}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {option.priceNGN && (
-                      <Badge variant="outline">{fmtNGN(option.priceNGN)}</Badge>
-                    )}
-                    {option.badge && (
-                      <Badge>{option.badge}</Badge>
-                    )}
+                <div key={option.value} className="border border-gray-200 rounded-lg p-4 hover:border-orange-300 transition-colors">
+                  <div className="flex items-start space-x-3">
+                    <RadioGroupItem value={option.value} id={option.value} className="mt-1" />
+                    <div className="flex-1">
+                      <Label htmlFor={option.value} className="font-medium text-gray-900 cursor-pointer">
+                        {option.label}
+                      </Label>
+                      {option.sublabel && (
+                        <p className="text-sm text-gray-600 mt-1">{option.sublabel}</p>
+                      )}
+                      {option.priceNGN && (
+                        <p className="text-lg font-bold text-orange-600 mt-2">₦{option.priceNGN.toLocaleString()}</p>
+                      )}
+                      {option.badge && (
+                        <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mt-2">
+                          {option.badge}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
             </RadioGroup>
+            {helpText}
           </div>
         );
 
       case 'date':
         return (
           <div key={field.id} className="space-y-2">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Input type="date" />
+            {label}
+            <Input 
+              type="date" 
+              required={isRequired}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
           </div>
         );
 
       case 'number':
         return (
           <div key={field.id} className="space-y-2">
-            <Label>
-              {field.label} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Input type="number" min={field.min} max={field.max} />
+            {label}
+            <Input 
+              type="number" 
+              required={isRequired}
+              min={field.min} 
+              max={field.max}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
           </div>
         );
 
       default:
         return (
-          <div key={field.id} className="p-4 border rounded-lg">
-            <p className="text-muted-foreground">Field type "{field.type}" not implemented yet</p>
+          <div key={field.id} className="space-y-2">
+            {label}
+            <Input 
+              placeholder={field.placeholder || `Enter ${field.type}`} 
+              required={isRequired}
+              className="border-gray-300 focus:border-orange-400 focus:ring-orange-400"
+            />
+            {helpText}
           </div>
         );
     }
@@ -223,99 +284,105 @@ export default function FormPreviewPage() {
 
   return (
     <TooltipProvider>
-      <div className="p-6 space-y-6">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100">
+        <div className="max-w-2xl mx-auto pt-8 pb-12">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-8 px-4">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => navigate('/forms')}
+              className="text-gray-600 hover:text-gray-900"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Forms
             </Button>
-            <div>
-              <h1 className="text-2xl font-bold">{form.meta.name}</h1>
-              <p className="text-muted-foreground">Form Preview</p>
-            </div>
-          </div>
-          <div className="flex gap-2">
-            <Dialog open={embedDialogOpen} onOpenChange={setEmbedDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="outline">
-                  <Code className="h-4 w-4 mr-2" />
-                  Copy Embed Code
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[600px]">
-                <DialogHeader>
-                  <DialogTitle>Embed Form Code</DialogTitle>
-                  <DialogDescription>
-                    Copy the iframe code below and paste it into your WordPress page to embed this form.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="embed-code">Iframe Code</Label>
-                    <div className="relative">
-                      <Input
-                        id="embed-code"
-                        value={generateEmbedCode(form.meta.id)}
-                        readOnly
-                        className="font-mono text-sm pr-12"
-                        onClick={(e) => e.currentTarget.select()}
-                      />
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            className="absolute right-1 top-1 h-8 w-8 p-0"
-                            onClick={handleCopyEmbedCode}
-                          >
-                            {copied ? (
-                              <Check className="h-4 w-4 text-green-600" />
-                            ) : (
-                              <Copy className="h-4 w-4" />
-                            )}
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Paste this code into your WordPress page to embed the form</p>
-                        </TooltipContent>
-                      </Tooltip>
+            <div className="flex gap-2">
+              <Dialog open={embedDialogOpen} onOpenChange={setEmbedDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="outline" className="bg-white">
+                    <Code className="h-4 w-4 mr-2" />
+                    Embed
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px]">
+                  <DialogHeader>
+                    <DialogTitle>Embed Form Code</DialogTitle>
+                    <DialogDescription>
+                      Copy the iframe code below and paste it into your WordPress page to embed this form.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="embed-code">Iframe Code</Label>
+                      <div className="relative">
+                        <Input
+                          id="embed-code"
+                          value={generateEmbedCode(form.meta.id)}
+                          readOnly
+                          className="font-mono text-sm pr-12"
+                          onClick={(e) => e.currentTarget.select()}
+                        />
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="absolute right-1 top-1 h-8 w-8 p-0"
+                              onClick={handleCopyEmbedCode}
+                            >
+                              {copied ? (
+                                <Check className="h-4 w-4 text-green-600" />
+                              ) : (
+                                <Copy className="h-4 w-4" />
+                              )}
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Paste this code into your WordPress page to embed the form</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                    </div>
+                    <div className="bg-muted p-4 rounded-lg">
+                      <h4 className="font-medium mb-2">How to use:</h4>
+                      <ol className="text-sm text-muted-foreground space-y-1">
+                        <li>1. Copy the iframe code above</li>
+                        <li>2. Paste it into your WordPress page or post editor</li>
+                        <li>3. The form will display embedded on your website</li>
+                      </ol>
                     </div>
                   </div>
-                  <div className="bg-muted p-4 rounded-lg">
-                    <h4 className="font-medium mb-2">How to use:</h4>
-                    <ol className="text-sm text-muted-foreground space-y-1">
-                      <li>1. Copy the iframe code above</li>
-                      <li>2. Paste it into your WordPress page or post editor</li>
-                      <li>3. The form will display embedded on your website</li>
-                    </ol>
-                  </div>
-                </div>
-              </DialogContent>
-            </Dialog>
-            <Button onClick={() => navigate(`/forms/${id}/design`)}>
-              <Edit className="h-4 w-4 mr-2" />
-              Edit Form
-            </Button>
+                </DialogContent>
+              </Dialog>
+              <Button onClick={() => navigate(`/forms/${id}/design`)} className="bg-white text-gray-900 hover:bg-gray-50">
+                <Edit className="h-4 w-4 mr-2" />
+                Edit
+              </Button>
+            </div>
           </div>
-        </div>
 
-        <div className="max-w-4xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle>{form.meta.name}</CardTitle>
+          {/* Form Card */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden mx-4">
+            {/* Form Header */}
+            <div className="bg-gradient-to-r from-orange-400 to-yellow-500 text-white p-6 text-center">
+              <h1 className="text-2xl font-bold">{form.meta.name}</h1>
               {form.meta.description && (
-                <p className="text-muted-foreground">{form.meta.description}</p>
+                <p className="mt-2 opacity-90">{form.meta.description}</p>
               )}
-            </CardHeader>
-            <CardContent className="space-y-6">
+            </div>
+
+            {/* Form Content */}
+            <div className="p-8 space-y-8">
               {form.fields.map(renderField)}
-            </CardContent>
-          </Card>
+              
+              <div className="pt-6">
+                <Button className="w-full bg-gradient-to-r from-orange-400 to-yellow-500 hover:from-orange-500 hover:to-yellow-600 text-white font-semibold py-3 text-lg">
+                  Submit Order
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </TooltipProvider>

@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Plus, MoreHorizontal, Eye, Copy, Trash2, Edit, Code, Check } from 'lucide-react';
+import { Plus, Eye, Copy, Trash2, Edit, Code, Check, FileText, Search, CalendarDays } from 'lucide-react';
 import { FormSchema } from '@/modules/forms/types';
 import { getFormsService } from '@/modules/forms/storage/FormsService';
 import { useToast } from '@/hooks/use-toast';
@@ -110,96 +108,139 @@ export default function FormsListPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold">Forms</h1>
-            <p className="text-muted-foreground">Manage your forms and surveys</p>
+            <p className="text-muted-foreground">Create and manage your forms</p>
           </div>
           <Link to="/forms/new">
-            <Button>
+            <Button className="bg-blue-600 hover:bg-blue-700">
               <Plus className="h-4 w-4 mr-2" />
-              New Form
+              Create New Form
             </Button>
           </Link>
         </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>All Forms</CardTitle>
-            <CardDescription>
-              {forms.length} form{forms.length !== 1 ? 's' : ''} total
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Updated</TableHead>
-                  <TableHead className="w-[100px]">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {forms.map((form) => (
-                  <TableRow key={form.meta.id}>
-                    <TableCell>
-                      <div>
-                        <div className="font-medium">{form.meta.name}</div>
-                        {form.meta.description && (
-                          <div className="text-sm text-muted-foreground">{form.meta.description}</div>
-                        )}
-                      </div>
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={getStatusBadgeVariant(form.meta.status)}>
-                        {form.meta.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      {new Date(form.meta.updatedAt).toLocaleDateString()}
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" className="h-8 w-8 p-0">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem asChild>
-                            <Link to={`/forms/${form.meta.id}/design`}>
-                              <Edit className="h-4 w-4 mr-2" />
-                              Open
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem asChild>
-                            <Link to={`/forms/${form.meta.id}/preview`}>
-                              <Eye className="h-4 w-4 mr-2" />
-                              Preview
-                            </Link>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleEmbedClick(form)}>
-                            <Code className="h-4 w-4 mr-2" />
-                            Copy Embed Code
-                          </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => handleDuplicate(form.meta.id)}>
-                            <Copy className="h-4 w-4 mr-2" />
-                            Duplicate
-                          </DropdownMenuItem>
-                          <DropdownMenuItem 
-                            onClick={() => handleDelete(form.meta.id)}
-                            className="text-destructive"
-                          >
-                            <Trash2 className="h-4 w-4 mr-2" />
-                            Delete
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        <div className="w-full max-w-md">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Input
+              placeholder="Search forms..."
+              className="pl-10 bg-background border-input"
+            />
+          </div>
+        </div>
+
+        {forms.length === 0 ? (
+          <div className="flex flex-col items-center justify-center py-12">
+            <div className="w-24 h-24 bg-muted rounded-lg flex items-center justify-center mb-6">
+              <FileText className="h-12 w-12 text-muted-foreground" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2">No forms found</h3>
+            <p className="text-muted-foreground mb-6">Get started by creating your first form.</p>
+            <Link to="/forms/new">
+              <Button className="bg-gray-900 hover:bg-gray-800 text-white">
+                <Plus className="h-4 w-4 mr-2" />
+                Create Your First Form
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {forms.map((form) => (
+              <Card key={form.meta.id} className="hover:shadow-md transition-shadow">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">{form.meta.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{form.meta.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 mb-4">
+                    <Badge 
+                      variant={getStatusBadgeVariant(form.meta.status)}
+                      className="text-xs"
+                    >
+                      {form.meta.status}
+                    </Badge>
+                    <div className="flex items-center text-xs text-muted-foreground gap-1">
+                      <FileText className="h-3 w-3" />
+                      {form.fields.length} fields
+                    </div>
+                    <div className="flex items-center text-xs text-muted-foreground gap-1">
+                      <CalendarDays className="h-3 w-3" />
+                      Created {new Date(form.meta.createdAt).toLocaleDateString()}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs"
+                      asChild
+                    >
+                      <Link to={`/forms/${form.meta.id}/preview`}>
+                        <Eye className="h-3 w-3 mr-1" />
+                        Preview
+                      </Link>
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs text-blue-600 hover:text-blue-700"
+                      asChild
+                    >
+                      <Link to={`/forms/${form.meta.id}/design`}>
+                        <Edit className="h-3 w-3 mr-1" />
+                        Open
+                      </Link>
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs bg-blue-50 text-blue-600 hover:bg-blue-100"
+                      asChild
+                    >
+                      <Link to={`/forms/${form.meta.id}/design`}>
+                        <Edit className="h-3 w-3 mr-1" />
+                        Edit
+                      </Link>
+                    </Button>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs"
+                      onClick={() => handleEmbedClick(form)}
+                    >
+                      <Code className="h-3 w-3 mr-1" />
+                      Embed
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs"
+                      onClick={() => handleDuplicate(form.meta.id)}
+                    >
+                      <Copy className="h-3 w-3 mr-1" />
+                      Duplicate
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm"
+                      className="text-xs text-red-600 hover:text-red-700"
+                      onClick={() => handleDelete(form.meta.id)}
+                    >
+                      <Trash2 className="h-3 w-3 mr-1" />
+                      Delete
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
 
         <Dialog open={embedDialogOpen} onOpenChange={setEmbedDialogOpen}>
           <DialogContent className="sm:max-w-[600px]">
