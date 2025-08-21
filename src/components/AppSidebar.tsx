@@ -21,6 +21,8 @@ import {
   Megaphone,
   GraduationCap,
   IdCard,
+  Search,
+  TrendingUp,
 } from "lucide-react";
 import {
   Sidebar,
@@ -66,7 +68,9 @@ const businessRoles = [
   { name: 'telesales', label: 'Telesales', description: 'Operations', gradient: 'bg-gradient-purple' },
   { name: 'delivery_agent', label: 'Delivery', description: 'Operations', gradient: 'bg-gradient-amber' },
   { name: 'accountant', label: 'Accountant', description: 'Finance', gradient: 'bg-gradient-indigo' },
-  { name: 'cfo', label: 'Financial Controller', description: 'Management', gradient: 'bg-gradient-rose' },
+  { name: 'business_analyst', label: 'Business Analyst', description: 'Analytics', gradient: 'bg-gradient-info' },
+  { name: 'auditor', label: 'Auditor', description: 'Audit', gradient: 'bg-gradient-accent' },
+  { name: 'cfo', label: 'CFO', description: 'Finance', gradient: 'bg-gradient-rose' },
   { name: 'manager', label: 'General Manager', description: 'Executive', gradient: 'bg-gradient-secondary' },
   { name: 'ceo', label: 'CEO', description: 'Executive Officer', gradient: 'bg-gradient-primary' },
   { name: 'hr', label: 'HR', description: 'Human Resources', gradient: 'bg-gradient-success' },
@@ -75,7 +79,7 @@ const businessRoles = [
   { name: 'investor', label: 'Investor', description: 'Management', gradient: 'bg-gradient-accent' },
 ];
 
-type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
+type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'business_analyst' | 'auditor' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
@@ -158,6 +162,8 @@ export function AppSidebar() {
                           {role.name === 'telesales' && <Users className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'delivery_agent' && <Truck className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'accountant' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'business_analyst' && <TrendingUp className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'auditor' && <Search className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'cfo' && <FileText className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'manager' && <UserCog className="h-3.5 w-3.5 text-white" />}
                           {role.name === 'ceo' && <Shield className="h-3.5 w-3.5 text-white" />}

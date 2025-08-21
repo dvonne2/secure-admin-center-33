@@ -5,6 +5,8 @@ export type UserRole =
   | "telesales"
   | "delivery_agent"
   | "accountant"
+  | "business_analyst"
+  | "auditor"
   | "cfo"
   | "ceo"
   | "hr"
