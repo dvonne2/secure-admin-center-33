@@ -1,7 +1,10 @@
+
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { ActivityLog, BusinessRole } from "@/types/auth";
+import { ActivityLog } from "@/types/auth";
 import { useNavigate } from "react-router-dom";
+
+type BusinessRole = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
 
 interface RoleSwitchOptions {
   targetRole: BusinessRole;

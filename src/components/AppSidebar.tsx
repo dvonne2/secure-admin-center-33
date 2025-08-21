@@ -1,324 +1,273 @@
-
-import React from 'react';
 import {
-  LayoutDashboard,
-  User,
+  Calendar,
+  Users,
   Settings,
+  BarChart3,
   FileText,
-  BarChart,
-  DollarSign,
+  Shield,
+  Activity,
+  UserCog,
+  Database,
+  LogOut,
+  ChevronRight,
+  UserCheck,
   Package,
   Truck,
-  Users,
-  Calculator,
-  TrendingUp,
-  Factory,
-  Monitor,
-  Lightbulb,
-  Wallet,
+  Cog,
+  ClipboardList,
   Headphones,
-  Shield,
-  Database,
-  Activity,
-  LogOut,
-} from 'lucide-react';
-import { NavLink } from 'react-router-dom';
-import { useAuth } from '@/contexts/AuthContext';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useRoleSwitcher } from '@/hooks/useRoleSwitcher';
-import { Button } from '@/components/ui/button';
-import { BusinessRole } from '@/types/auth';
-import { SidebarContent, SidebarHeader, SidebarFooter, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
+  Box,
+  Book,
+  Megaphone,
+  GraduationCap,
+  IdCard,
+} from "lucide-react";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarHeader,
+} from "@/components/ui/sidebar";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Link, useLocation } from "react-router-dom";
+import { useRoleSwitcher } from "@/hooks/useRoleSwitcher";
 
-interface NavItem {
-  title: string;
-  subtitle: string;
-  icon: React.ComponentType<any>;
-  route: string;
-  targetRole?: BusinessRole | 'superadmin';
-  color?: string;
-}
-
-const roleBasedNavItems: NavItem[] = [
-  {
-    title: "Dashboard",
-    subtitle: "Overview of your application",
-    icon: LayoutDashboard,
-    route: '/dashboard'
-  },
-  {
-    title: "User Management",
-    subtitle: "Manage user accounts and roles",
-    icon: Users,
-    targetRole: 'superadmin',
-    route: '/user-management'
-  },
-  {
-    title: "Activity Logs",
-    subtitle: "Track user activities and changes",
-    icon: Activity,
-    targetRole: 'superadmin',
-    route: '/activity-logs'
-  },
-  {
-    title: "Forms",
-    subtitle: "Create and manage forms",
-    icon: FileText,
-    route: '/forms'
-  },
-  {
-    title: "Settings",
-    subtitle: "System configuration",
-    icon: Settings,
-    route: '/settings'
-  },
-  {
-    title: "Database",
-    subtitle: "Data management",
-    icon: Database,
-    route: '/database'
-  },
-  {
-    title: "KYC",
-    subtitle: "Compliance",
-    icon: Shield,
-    targetRole: 'kyc',
-    route: '/dashboard/kyc',
-    color: 'bg-red-500'
-  },
-  {
-    title: "SystemForce Academy",
-    subtitle: "Academy",
-    icon: Lightbulb,
-    targetRole: 'systemforce_academy',
-    route: '/dashboard/systemforce-academy',
-    color: 'bg-purple-500'
-  },
-  {
-    title: "System Automation",
-    subtitle: "Automation",
-    icon: Activity,
-    targetRole: 'system_automation',
-    route: '/dashboard/system-automation',
-    color: 'bg-orange-500'
-  },
-  {
-    title: "Logistics",
-    subtitle: "Operations",
-    icon: Truck,
-    targetRole: 'production',
-    route: '/dashboard/production',
-    color: 'bg-teal-500'
-  },
-  {
-    title: "Inventory",
-    subtitle: "Management",
-    icon: Package,
-    targetRole: 'inventory',
-    route: '/dashboard/inventory',
-    color: 'bg-green-500'
-  },
-  {
-    title: "Telesales",
-    subtitle: "Operations",
-    icon: Headphones,
-    targetRole: 'telesales',
-    route: '/dashboard/telesales',
-    color: 'bg-purple-500'
-  },
-  {
-    title: "Delivery",
-    subtitle: "Operations",
-    icon: Truck,
-    targetRole: 'delivery_agent',
-    route: '/dashboard/delivery-agent',
-    color: 'bg-orange-500'
-  },
-  {
-    title: "Accountant",
-    subtitle: "Finance",
-    icon: Calculator,
-    targetRole: 'accountant',
-    route: '/dashboard/accountant',
-    color: 'bg-blue-500'
-  },
-  {
-    title: "Financial Controller",
-    subtitle: "Management",
-    icon: DollarSign,
-    targetRole: 'cfo',
-    route: '/dashboard/cfo',
-    color: 'bg-red-500'
-  },
-  {
-    title: "Business Analysis",
-    subtitle: "Analytics",
-    icon: BarChart,
-    targetRole: 'business_analysis',
-    route: '/dashboard/business-analysis',
-    color: 'bg-indigo-500'
-  },
-  {
-    title: "General Manager",
-    subtitle: "Executive",
-    icon: Users,
-    targetRole: 'manager',
-    route: '/dashboard/manager',
-    color: 'bg-teal-500'
-  },
-  {
-    title: "CEO",
-    subtitle: "Executive Officer",
-    icon: Shield,
-    targetRole: 'ceo',
-    route: '/dashboard/ceo',
-    color: 'bg-blue-500'
-  },
-  {
-    title: "HR",
-    subtitle: "Human Resources",
-    icon: User,
-    targetRole: 'hr',
-    route: '/dashboard/hr',
-    color: 'bg-green-500'
-  },
-  {
-    title: "Manufacturing",
-    subtitle: "Operations",
-    icon: Factory,
-    targetRole: 'manufacturing',
-    route: '/dashboard/manufacturing',
-    color: 'bg-blue-500'
-  },
-  {
-    title: "Media Buyer",
-    subtitle: "Marketing",
-    icon: Monitor,
-    targetRole: 'media_buyer',
-    route: '/dashboard/media-buyer',
-    color: 'bg-yellow-500'
-  },
-  {
-    title: "Investor",
-    subtitle: "Management",
-    icon: TrendingUp,
-    targetRole: 'investor',
-    route: '/dashboard/investor',
-    color: 'bg-orange-500'
-  },
+// Main dashboard navigation items with enhanced colors
+const mainNavItems = [
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3, gradient: "bg-gradient-primary", hoverGradient: "hover-gradient-purple" },
+  { title: "User Management", url: "/users", icon: UserCog, gradient: "bg-gradient-secondary", hoverGradient: "hover-gradient-teal" },
+  { title: "System Logs", url: "/logs", icon: ClipboardList, gradient: "bg-gradient-accent", hoverGradient: "hover-gradient-amber" },
+  { title: "Forms", url: "/forms", icon: FileText, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-blue" },
+  { title: "Settings", url: "/settings", icon: Settings, gradient: "bg-gradient-success", hoverGradient: "hover-gradient-emerald" },
+  { title: "Database", url: "/database", icon: Database, gradient: "bg-gradient-info", hoverGradient: "hover-gradient-indigo" },
 ];
+
+// Vitalvida System Automation items with vibrant colors
+const vitalvidaAutomationItems = [
+  { title: "Vitalvida CRM", url: "/vitalvida/crm", icon: Headphones, gradient: "bg-gradient-rose", hoverGradient: "hover-gradient-rose" },
+  { title: "Vitalvida Inventory", url: "/vitalvida/inventory", icon: Box, gradient: "bg-gradient-emerald", hoverGradient: "hover-gradient-emerald" },
+  { title: "Vitalvida Books", url: "/vitalvida/books", icon: Book, gradient: "bg-gradient-purple", hoverGradient: "hover-gradient-purple" },
+  { title: "Vitalvida Marketing", url: "/vitalvida/marketing", icon: Megaphone, gradient: "bg-gradient-amber", hoverGradient: "hover-gradient-amber" },
+];
+
+const businessRoles = [
+  { name: 'kyc', label: 'KYC', description: 'Compliance', gradient: 'bg-gradient-rose' },
+  { name: 'systemforce_academy', label: 'SystemForce Academy', description: 'Academy', gradient: 'bg-gradient-purple' },
+  { name: 'production', label: 'Logistics', description: 'Operations', gradient: 'bg-gradient-teal' },
+  { name: 'inventory', label: 'Inventory', description: 'Management', gradient: 'bg-gradient-emerald' },
+  { name: 'telesales', label: 'Telesales', description: 'Operations', gradient: 'bg-gradient-purple' },
+  { name: 'delivery_agent', label: 'Delivery', description: 'Operations', gradient: 'bg-gradient-amber' },
+  { name: 'accountant', label: 'Accountant', description: 'Finance', gradient: 'bg-gradient-indigo' },
+  { name: 'cfo', label: 'Financial Controller', description: 'Management', gradient: 'bg-gradient-rose' },
+  { name: 'manager', label: 'General Manager', description: 'Executive', gradient: 'bg-gradient-secondary' },
+  { name: 'ceo', label: 'CEO', description: 'Executive Officer', gradient: 'bg-gradient-primary' },
+  { name: 'hr', label: 'HR', description: 'Human Resources', gradient: 'bg-gradient-success' },
+  { name: 'manufacturing', label: 'Manufacturing', description: 'Operations', gradient: 'bg-gradient-info' },
+  { name: 'media_buyer', label: 'Media Buyer', description: 'Marketing', gradient: 'bg-gradient-warning' },
+  { name: 'investor', label: 'Investor', description: 'Management', gradient: 'bg-gradient-accent' },
+];
+
+type BusinessRoleType = 'kyc' | 'systemforce_academy' | 'production' | 'inventory' | 'telesales' | 'delivery_agent' | 'accountant' | 'cfo' | 'ceo' | 'hr' | 'manufacturing' | 'media_buyer' | 'investor' | 'manager';
 
 export function AppSidebar() {
   const { user, logout } = useAuth();
+  const location = useLocation();
   const { switchToRole, exitRoleSwitch, isImpersonating, canSwitchRoles } = useRoleSwitcher();
 
-  const filteredNavItems = roleBasedNavItems.filter(item => {
-    if (!item.targetRole) return true;
-    return user?.role === 'superadmin' || user?.business_role === item.targetRole;
-  });
+  if (!user) return null;
 
-  const mainNavItems = filteredNavItems.filter(item => !item.targetRole || item.targetRole === 'superadmin');
-  const roleNavItems = filteredNavItems.filter(item => item.targetRole && item.targetRole !== 'superadmin');
+  const handleRoleSwitch = (targetRole: BusinessRoleType) => {
+    switchToRole({ targetRole, originalRole: user.role });
+  };
 
   return (
-    <>
-      <SidebarHeader className="p-6 border-b">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+    <Sidebar className="border-r border-modern-slate-200">
+      <SidebarHeader className="p-4 border-b border-modern-slate-200 bg-gradient-to-br from-modern-blue-50 via-modern-purple-50 to-modern-emerald-50">
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-center w-12 h-12 bg-gradient-primary rounded-xl shadow-modern-lg transform hover:scale-105 transition-all duration-300">
             <Shield className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-gray-900">VitalVida ERP</h1>
-            <p className="text-sm text-gray-500">Enterprise System</p>
+            <h1 className="text-xl font-bold bg-gradient-to-r from-modern-blue-600 via-modern-purple-600 to-modern-emerald-600 bg-clip-text text-transparent">
+              VitalVida ERP
+            </h1>
+            <p className="text-sm text-modern-slate-600 font-medium">Enterprise System</p>
           </div>
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="px-4 py-4">
-        <SidebarMenu className="space-y-1">
-          {mainNavItems.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <NavLink
-                  to={item.route}
-                  className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors ${
-                      isActive 
-                        ? 'bg-blue-50 text-blue-700 border border-blue-200' 
-                        : 'text-gray-700 hover:bg-gray-50'
-                    }`
-                  }
-                >
-                  <item.icon className="h-5 w-5 flex-shrink-0" />
-                  <span className="truncate">{item.title}</span>
-                </NavLink>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-
-        {roleNavItems.length > 0 && (
-          <>
-            <div className="px-3 py-4">
-              <div className="flex items-center gap-2 text-blue-600 font-medium">
-                <User className="h-4 w-4" />
-                <span className="text-sm">Enter As Role</span>
-              </div>
-            </div>
-            
-            <SidebarMenu className="space-y-1">
-              {roleNavItems.map((item) => (
+      <SidebarContent className="bg-gradient-to-b from-modern-slate-50/80 via-white to-modern-blue-50/30">
+        {/* Main Navigation Section with Enhanced Colors */}
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {mainNavItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink
-                      to={item.route}
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors ${
-                          isActive 
-                            ? 'bg-blue-50 text-blue-700 border border-blue-200' 
-                            : 'text-gray-700 hover:bg-gray-50'
-                        }`
-                      }
-                    >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${item.color || 'bg-gray-500'}`}>
-                        <item.icon className="h-4 w-4 text-white" />
+                  <SidebarMenuButton 
+                    asChild 
+                    isActive={location.pathname === item.url}
+                    className={`transition-all duration-300 mx-2 rounded-xl ${location.pathname === item.url ? 'shadow-modern-lg transform scale-105' : 'hover:shadow-modern hover:transform hover:scale-102'} ${item.hoverGradient}`}
+                  >
+                    <Link to={item.url} className="flex items-center gap-3 p-3">
+                      <div className={`p-2 rounded-lg ${location.pathname === item.url ? item.gradient : 'bg-modern-slate-100'} shadow-modern transition-all duration-300`}>
+                        <item.icon className={`h-4 w-4 ${location.pathname === item.url ? 'text-white' : 'text-modern-slate-600'}`} />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-medium text-gray-900">{item.title}</div>
-                        <div className="text-xs text-gray-500">{item.subtitle}</div>
-                      </div>
-                    </NavLink>
+                      <span className={`font-semibold transition-colors duration-300 ${location.pathname === item.url ? 'bg-gradient-to-r from-modern-blue-600 to-modern-purple-600 bg-clip-text text-transparent' : 'text-modern-slate-700'}`}>
+                        {item.title}
+                      </span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
-          </>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {canSwitchRoles && (
+          <SidebarGroup>
+            <SidebarGroupLabel className="flex items-center gap-2 text-modern-slate-700 font-bold px-4 mb-2">
+              <div className="p-1.5 rounded-lg bg-gradient-secondary shadow-modern">
+                <UserCheck className="h-4 w-4 text-white" />
+              </div>
+              <span className="bg-gradient-to-r from-modern-teal-600 to-modern-blue-600 bg-clip-text text-transparent">
+                Enter As Role
+              </span>
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {businessRoles.map((role) => (
+                  <SidebarMenuItem key={role.name}>
+                    <SidebarMenuButton 
+                      onClick={() => handleRoleSwitch(role.name as BusinessRoleType)}
+                      className="mx-2 p-2 hover:bg-gradient-to-r hover:from-modern-slate-100 hover:to-modern-blue-50 hover:shadow-modern rounded-xl transition-all duration-300 hover:transform hover:scale-102"
+                    >
+                      <div className="flex items-center gap-2.5 w-full">
+                        <div className={`p-1.5 rounded-lg ${role.gradient} shadow-modern transform transition-all duration-300 hover:scale-110 flex-shrink-0`}>
+                          {role.name === 'kyc' && <IdCard className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'systemforce_academy' && <GraduationCap className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'production' && <Truck className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'inventory' && <Package className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'telesales' && <Users className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'delivery_agent' && <Truck className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'accountant' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'cfo' && <FileText className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'manager' && <UserCog className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'ceo' && <Shield className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'hr' && <Users className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'manufacturing' && <Cog className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'media_buyer' && <Megaphone className="h-3.5 w-3.5 text-white" />}
+                          {role.name === 'investor' && <BarChart3 className="h-3.5 w-3.5 text-white" />}
+                        </div>
+                        <div className="flex flex-col items-start min-w-0 flex-1">
+                          <span className="font-medium text-modern-slate-700 text-sm truncate w-full">{role.label}</span>
+                          <span className="text-xs text-modern-slate-500 font-normal truncate w-full">{role.description}</span>
+                        </div>
+                        <ChevronRight className="ml-auto h-3.5 w-3.5 text-modern-slate-400 transition-transform duration-300 group-hover:transform group-hover:translate-x-1 flex-shrink-0" />
+                      </div>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        )}
+
+        {/* Vitalvida System Automation Section with Rainbow Colors */}
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-sm font-bold text-modern-slate-700 border-b border-modern-slate-200 pb-3 mb-3 mx-4">
+            <div className="flex items-center gap-2">
+              <div className="p-1.5 rounded-lg bg-gradient-to-r from-modern-orange-500 to-modern-rose-500 shadow-modern">
+                <Activity className="h-4 w-4 text-white" />
+              </div>
+              <span className="bg-gradient-to-r from-modern-orange-600 via-modern-rose-600 to-modern-purple-600 bg-clip-text text-transparent">
+                Vitalvida System Automation
+              </span>
+            </div>
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {vitalvidaAutomationItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton 
+                    asChild 
+                    isActive={location.pathname === item.url}
+                    className={`mx-2 rounded-xl transition-all duration-300 ${location.pathname === item.url ? 'shadow-modern-lg transform scale-105' : 'hover:shadow-modern hover:transform hover:scale-102'} ${item.hoverGradient}`}
+                  >
+                    <Link to={item.url} className="flex items-center gap-3 p-3">
+                      <div className={`p-2 rounded-lg ${location.pathname === item.url ? item.gradient : 'bg-modern-slate-100'} shadow-modern transition-all duration-300`}>
+                        <item.icon className={`h-4 w-4 ${location.pathname === item.url ? 'text-white' : 'text-modern-slate-600'}`} />
+                      </div>
+                      <span className={`font-semibold transition-colors duration-300 ${location.pathname === item.url ? 'bg-gradient-to-r from-orange-600 to-rose-600 bg-clip-text text-transparent' : 'text-modern-slate-700'}`}>
+                        {item.title}
+                      </span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {isImpersonating && (
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton 
+                    onClick={exitRoleSwitch} 
+                    className="mx-2 bg-gradient-warning hover:shadow-modern-lg text-white rounded-xl transition-all duration-300 hover:transform hover:scale-105 p-3"
+                  >
+                    <div className="p-2 rounded-lg bg-white/20 shadow-modern">
+                      <Shield className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="font-semibold">Exit Role Switch</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
         )}
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t">
-        <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 border border-blue-200">
-          <Avatar className="h-10 w-10">
-            <AvatarFallback className="bg-blue-600 text-white text-sm font-medium">
-              {user?.name?.slice(0, 2).toUpperCase() || 'SU'}
-            </AvatarFallback>
+      <SidebarFooter className="p-4 border-t border-modern-slate-200 bg-gradient-to-r from-modern-slate-50 via-modern-blue-50 to-modern-purple-50">
+        <div className="flex items-center space-x-3 mb-3">
+          <Avatar className="h-12 w-12 border-2 border-transparent bg-gradient-to-r from-modern-blue-500 to-modern-purple-500 p-0.5">
+            <div className="h-full w-full rounded-full bg-white flex items-center justify-center">
+              <AvatarFallback className="bg-gradient-primary text-white text-sm font-bold border-0">
+                {user.username.slice(0, 2).toUpperCase()}
+              </AvatarFallback>
+            </div>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <div className="font-medium text-gray-900 text-sm">{user?.name || 'superadmin'}</div>
-            <div className="text-xs text-blue-600 capitalize">{user?.role || 'Superadmin'}</div>
+            <p className="text-sm font-bold bg-gradient-to-r from-modern-slate-700 to-modern-blue-700 bg-clip-text text-transparent truncate">{user.username}</p>
+            <p className="text-xs text-modern-slate-600 capitalize font-medium">
+              <span className="bg-gradient-to-r from-modern-emerald-600 to-modern-teal-600 bg-clip-text text-transparent">
+                {user.role}
+              </span>
+              {isImpersonating && (
+                <span className="ml-1 text-orange-600 font-semibold">(Impersonating)</span>
+              )}
+            </p>
           </div>
         </div>
-        
         <Button 
-          variant="ghost" 
-          onClick={() => logout()}
-          className="w-full justify-start gap-2 mt-2 text-gray-700 hover:bg-gray-50"
+          variant="outline" 
+          size="sm" 
+          onClick={logout} 
+          className="w-full border-modern-slate-300 hover:bg-gradient-primary hover:text-white hover:border-transparent transition-all duration-300 font-semibold hover:shadow-modern transform hover:scale-105"
         >
-          <LogOut className="h-4 w-4" />
-          <span>Logout</span>
+          <LogOut className="h-4 w-4 mr-2" />
+          Logout
         </Button>
       </SidebarFooter>
-    </>
+    </Sidebar>
   );
 }

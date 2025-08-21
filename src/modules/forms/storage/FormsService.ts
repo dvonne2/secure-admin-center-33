@@ -127,12 +127,10 @@ function seedIfEmpty() {
 
 export interface FormsServiceInterface {
   list(): Promise<FormSchema[]>;
-  getAll(): Promise<FormSchema[]>;
   get(id: string): Promise<FormSchema | null>;
   create(data: Partial<FormMeta>): Promise<FormSchema>;
   update(id: string, updates: Partial<FormSchema>): Promise<FormSchema>;
   remove(id: string): Promise<void>;
-  delete(id: string): Promise<void>;
   duplicate(id: string): Promise<FormSchema>;
 }
 
@@ -144,10 +142,6 @@ class LocalFormsService implements FormsServiceInterface {
   async list(): Promise<FormSchema[]> {
     const raw = localStorage.getItem(KEY);
     return raw ? JSON.parse(raw) : [];
-  }
-
-  async getAll(): Promise<FormSchema[]> {
-    return this.list();
   }
 
   async get(id: string): Promise<FormSchema | null> {
@@ -204,10 +198,6 @@ class LocalFormsService implements FormsServiceInterface {
     localStorage.setItem(KEY, JSON.stringify(filtered));
   }
 
-  async delete(id: string): Promise<void> {
-    return this.remove(id);
-  }
-
   async duplicate(id: string): Promise<FormSchema> {
     const original = await this.get(id);
     if (!original) throw new Error('Form not found');
@@ -226,10 +216,6 @@ class ApiFormsService implements FormsServiceInterface {
     throw new Error('API service not implemented yet');
   }
 
-  async getAll(): Promise<FormSchema[]> {
-    return this.list();
-  }
-
   async get(id: string): Promise<FormSchema | null> {
     throw new Error('API service not implemented yet');
   }
@@ -244,10 +230,6 @@ class ApiFormsService implements FormsServiceInterface {
 
   async remove(id: string): Promise<void> {
     throw new Error('API service not implemented yet');
-  }
-
-  async delete(id: string): Promise<void> {
-    return this.remove(id);
   }
 
   async duplicate(id: string): Promise<FormSchema> {
